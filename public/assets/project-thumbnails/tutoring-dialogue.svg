@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 210" role="img" aria-label="Tutoring dialogue analysis thumbnail">
+  <rect width="320" height="210" rx="12" fill="#f4f7fb"/>
+  <path d="M58 52h118c15 0 28 13 28 28s-13 28-28 28H96l-34 26v-26h-4c-15 0-28-13-28-28s13-28 28-28Z" fill="#fff" stroke="#174ea6" stroke-width="3"/>
+  <path d="M144 110h118c15 0 28 13 28 28s-13 28-28 28h-52l-34 24v-24h-32c-15 0-28-13-28-28s13-28 28-28Z" fill="#fff" stroke="#9c5f1d" stroke-width="3"/>
+  <g stroke="#76879a" stroke-width="5" stroke-linecap="round" opacity=".32">
+    <path d="M62 76h100"/>
+    <path d="M62 92h70"/>
+    <path d="M150 134h94"/>
+    <path d="M150 150h62"/>
+  </g>
+  <path d="M80 158c36-22 70-26 112-10" fill="none" stroke="#2f6f62" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="80" cy="158" r="6" fill="#2f6f62"/>
+  <circle cx="192" cy="148" r="6" fill="#2f6f62"/>
+</svg>

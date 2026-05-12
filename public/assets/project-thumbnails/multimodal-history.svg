@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 210" role="img" aria-label="Multimodal history learning prototype thumbnail">
+  <rect width="320" height="210" rx="12" fill="#f4f7fb"/>
+  <rect x="28" y="28" width="126" height="154" rx="10" fill="#fff" stroke="#c9d6e2"/>
+  <rect x="166" y="28" width="126" height="154" rx="10" fill="#fff" stroke="#c9d6e2"/>
+  <rect x="46" y="50" width="64" height="10" rx="5" fill="#174ea6" opacity=".2"/>
+  <rect x="184" y="50" width="64" height="10" rx="5" fill="#9c5f1d" opacity=".25"/>
+  <g fill="#76879a" opacity=".26">
+    <rect x="46" y="78" width="82" height="6" rx="3"/>
+    <rect x="46" y="94" width="70" height="6" rx="3"/>
+    <rect x="46" y="110" width="88" height="6" rx="3"/>
+    <rect x="184" y="78" width="78" height="6" rx="3"/>
+    <rect x="184" y="94" width="66" height="6" rx="3"/>
+    <rect x="184" y="110" width="84" height="6" rx="3"/>
+  </g>
+  <circle cx="91" cy="146" r="20" fill="#edf5f2" stroke="#2f6f62" stroke-width="3"/>
+  <path d="M82 147h18M91 138v18" stroke="#2f6f62" stroke-width="3" stroke-linecap="round"/>
+  <path d="M214 139l18-18 28 36h-64l14-18Z" fill="#f7ead8" stroke="#9c5f1d" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M154 96h12" stroke="#174ea6" stroke-width="4" stroke-linecap="round"/>
+</svg>

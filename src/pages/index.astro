@@ -5,7 +5,7 @@ import ProjectCard from "../components/ProjectCard.astro";
 import PublicationItem from "../components/PublicationItem.astro";
 import { featuredProjects } from "../data/projects";
 import { publications } from "../data/publications";
-import { highlights, news, profile, researchInterests } from "../data/site";
+import { education, news, profile, researchInterests } from "../data/site";
 
 const selectedPublications = publications.slice(0, 3);
 ---
@@ -32,15 +32,15 @@ const selectedPublications = publications.slice(0, 3);
       <div class="hero-actions">
         <a class="button primary" href="/projects/">View Projects</a>
         <a class="button secondary" href={profile.cv}>Download CV</a>
-        <a class="button text" href={`mailto:${profile.email}`}>Contact</a>
+        <a class="button text" href="#contact">Contact</a>
       </div>
     </div>
     <aside class="portrait-panel" aria-label="Portrait and contact summary">
       <img src={profile.portrait} alt="Portrait of Yunxi Kong" />
       <div class="portrait-card">
         <p>Duke University · Durham, NC</p>
+        <p class="email-text">{profile.email}</p>
         <div class="portrait-links">
-          <a href={`mailto:${profile.email}`}>Email</a>
           <a href={profile.github} target="_blank" rel="noreferrer">GitHub</a>
           <a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
         </div>
@@ -48,22 +48,51 @@ const selectedPublications = publications.slice(0, 3);
     </aside>
   </section>
 
-  <section class="summary-strip" aria-label="Highlights">
-    {highlights.map((item) => (
-      <div>
-        <p>{item.label}</p>
-        <strong>{item.value}</strong>
+  <section class="home-overview" aria-label="Education and news">
+    <div class="education-panel">
+      <SectionHeader
+        kicker="Education"
+        title="Education and training"
+        text="A concise academic timeline for visitors who want to understand my background quickly."
+      />
+      <div class="education-list">
+        {education.map((item) => (
+          <article class="education-item">
+            <div class="school-mark" style={`--school-color: ${item.color}`}>{item.mark}</div>
+            <div>
+              <div class="education-heading">
+                <h3>{item.institution}</h3>
+                <time>{item.period}</time>
+              </div>
+              <p class="degree">{item.degree}</p>
+              <p>{item.place}</p>
+              <p>{item.note}</p>
+            </div>
+          </article>
+        ))}
       </div>
-    ))}
+    </div>
+    <aside class="news-panel early-news">
+      <h2>News</h2>
+      <div class="news-list">
+        {news.map((item) => (
+          <article>
+            <time>{item.date}</time>
+            <p>{item.text}</p>
+            <span>{item.detail}</span>
+          </article>
+        ))}
+      </div>
+    </aside>
   </section>
 
   <section class="content-section">
     <SectionHeader
       kicker="Selected Work"
-      title="Projects at the intersection of learning, computation, and interaction"
+      title="Selected projects"
       text="The project pages collect system-building work, empirical analysis, and course research from my master's training."
     />
-    <div class="project-grid featured-grid">
+    <div class="selected-work-list">
       {featuredProjects.map((project) => <ProjectCard project={project} />)}
     </div>
     <div class="section-link">
@@ -71,34 +100,21 @@ const selectedPublications = publications.slice(0, 3);
     </div>
   </section>
 
-  <section class="content-section two-column-section">
-    <div>
-      <SectionHeader
-        kicker="Publications"
-        title="Publications, manuscripts, and selected research"
-        text="This section separates accepted work from manuscripts and selected course research so the record stays clear."
-      />
-      <div class="publication-list short-list">
-        {selectedPublications.map((publication) => <PublicationItem publication={publication} />)}
-      </div>
-      <div class="section-link">
-        <a href="/publications/">View publication list</a>
-      </div>
+  <section class="content-section">
+    <SectionHeader
+      kicker="Publications"
+      title="Publications, manuscripts, and selected research"
+      text="This section separates accepted work from manuscripts and selected course research so the record stays clear."
+    />
+    <div class="publication-list short-list">
+      {selectedPublications.map((publication) => <PublicationItem publication={publication} />)}
     </div>
-    <aside class="news-panel">
-      <h2>News</h2>
-      <div class="news-list">
-        {news.map((item) => (
-          <article>
-            <time>{item.date}</time>
-            <p>{item.text}</p>
-          </article>
-        ))}
-      </div>
-    </aside>
+    <div class="section-link">
+      <a href="/publications/">View publication list</a>
+    </div>
   </section>
 
-  <section class="content-section bridge-section">
+  <section class="content-section bridge-section" id="contact">
     <div>
       <p class="eyebrow">More Context</p>
       <h2>Additional academic and education technology materials</h2>
@@ -107,6 +123,7 @@ const selectedPublications = publications.slice(0, 3);
         education technology work in China, visit Ingenius Prime. For project details,
         papers, code, and CV materials, use the navigation links above.
       </p>
+      <p class="contact-line">Email: <span>{profile.email}</span></p>
     </div>
     <div class="bridge-actions">
       <a class="button primary" href={profile.edtech} target="_blank" rel="noreferrer">Visit Ingenius Prime</a>

@@ -10,20 +10,25 @@ const { project, compact = false } = Astro.props;
 ---
 
 <article class:list={["project-card", compact && "compact-card"]}>
-  <div class="card-meta">
-    <span>{project.year}</span>
-    <span>{project.category}</span>
-  </div>
-  <h3><a href={`/projects/${project.slug}/`}>{project.title}</a></h3>
-  {project.role && <p class="project-role">{project.role}</p>}
-  <p>{project.summary}</p>
-  <div class="tag-row" aria-label="Methods">
-    {project.methods.slice(0, compact ? 3 : 4).map((method) => <span>{method}</span>)}
-  </div>
-  <div class="card-actions">
-    <a href={`/projects/${project.slug}/`}>Read project</a>
-    {project.links?.slice(0, 1).map((link) => (
-      <a href={link.href} target="_blank" rel="noreferrer">{link.label}</a>
-    ))}
+  <a class="project-thumb" href={`/projects/${project.slug}/`} aria-label={`Open ${project.title}`}>
+    <img src={project.thumbnail} alt="" />
+  </a>
+  <div class="project-card-body">
+    <div class="card-meta">
+      <span>{project.year}</span>
+      <span>{project.category}</span>
+    </div>
+    <h3><a href={`/projects/${project.slug}/`}>{project.title}</a></h3>
+    {project.role && <p class="project-role">{project.role}</p>}
+    <p>{project.summary}</p>
+    <div class="tag-row" aria-label="Methods">
+      {project.methods.slice(0, compact ? 3 : 4).map((method) => <span>{method}</span>)}
+    </div>
+    <div class="card-actions">
+      <a href={`/projects/${project.slug}/`}>Read project</a>
+      {project.links?.slice(0, 1).map((link) => (
+        <a href={link.href} target="_blank" rel="noreferrer">{link.label}</a>
+      ))}
+    </div>
   </div>
 </article>
