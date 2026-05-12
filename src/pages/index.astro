@@ -5,7 +5,7 @@ import ProjectCard from "../components/ProjectCard.astro";
 import PublicationItem from "../components/PublicationItem.astro";
 import { featuredProjects } from "../data/projects";
 import { publications } from "../data/publications";
-import { education, news, profile, researchInterests } from "../data/site";
+import { education, news, profile, profileHighlights, researchInterests } from "../data/site";
 
 const selectedPublications = publications.slice(0, 3);
 ---
@@ -39,6 +39,15 @@ const selectedPublications = publications.slice(0, 3);
         <a class="button primary" href="/projects/">View Projects</a>
         <a class="button secondary" href={profile.cv}>Download CV</a>
         <a class="button text" href="#contact">Contact</a>
+      </div>
+      <div class="profile-highlight-grid" aria-label="Academic highlights">
+        {profileHighlights.map((item) => (
+          <article>
+            <strong>{item.value}</strong>
+            <span>{item.label}</span>
+            <p>{item.text}</p>
+          </article>
+        ))}
       </div>
     </div>
     <aside class="portrait-panel" aria-label="Portrait and contact summary">

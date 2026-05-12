@@ -1,22 +1,29 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionHeader from "../components/SectionHeader.astro";
+import { methodGroups } from "../data/site";
 
 const directions = [
   {
     title: "Learning as decision-making and information updating",
     text:
-      "Economics helps frame how learners allocate attention, time, effort, and beliefs in response to incentives and feedback."
+      "Economics helps frame how learners allocate attention, time, effort, and beliefs in response to incentives and feedback.",
+    evidence:
+      "This thread appears in my education policy work and in causal studies of tutoring and adaptive recommendation systems."
   },
   {
     title: "Learning as a latent but computable state",
     text:
-      "Computational systems infer learning from behavior, errors, trajectories, annotations, and interaction logs rather than observing it directly."
+      "Computational systems infer learning from behavior, errors, trajectories, annotations, and interaction logs rather than observing it directly.",
+    evidence:
+      "My projects use annotation traces, dialogue data, publication corpora, and behavioral logs as windows into learning processes."
   },
   {
     title: "Learning as a human-machine co-adaptive system",
     text:
-      "AI systems respond to human behavior, and learners respond to machine feedback. This creates a feedback loop that can be studied, designed, and evaluated."
+      "AI systems respond to human behavior, and learners respond to machine feedback. This creates a feedback loop that can be studied, designed, and evaluated.",
+    evidence:
+      "Histy and the AI history systems are early prototypes for studying how learners interact with AI-supported reading environments."
   }
 ];
 ---
@@ -47,6 +54,25 @@ const directions = [
           <span>{String(index + 1).padStart(2, "0")}</span>
           <h2>{direction.title}</h2>
           <p>{direction.text}</p>
+          <p>{direction.evidence}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="content-section methods-section">
+    <SectionHeader
+      kicker="Methods"
+      title="How I currently work"
+      text="My strongest materials combine working systems with empirical evaluation. The goal is to show both design judgment and methodological range."
+    />
+    <div class="method-grid">
+      {methodGroups.map((group) => (
+        <article>
+          <h3>{group.title}</h3>
+          <div class="tag-row">
+            {group.items.map((item) => <span>{item}</span>)}
+          </div>
         </article>
       ))}
     </div>
@@ -59,5 +85,8 @@ const directions = [
       <li>How can causal and computational methods evaluate learning technologies beyond simple engagement metrics?</li>
       <li>How should human-centered learning systems balance automation, interpretation, and teacher or student agency?</li>
     </ul>
+    <div class="section-link">
+      <a href="/projects/">See projects connected to these questions</a>
+    </div>
   </section>
 </BaseLayout>

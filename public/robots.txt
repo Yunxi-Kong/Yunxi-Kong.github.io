@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://yunxi-kong.github.io/sitemap.xml

@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { education, profile } from "../data/site";
+import { education, methodGroups, profile, profileHighlights } from "../data/site";
 import { projects } from "../data/projects";
 import { publications } from "../data/publications";
 ---
@@ -29,6 +29,18 @@ import { publications } from "../data/publications";
       <p><a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a></p>
     </aside>
     <div class="cv-main">
+      <section>
+        <h2>Academic Highlights</h2>
+        <div class="profile-highlight-grid cv-highlight-grid">
+          {profileHighlights.map((item) => (
+            <article>
+              <strong>{item.value}</strong>
+              <span>{item.label}</span>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
       <section>
         <h2>Education</h2>
         <div class="timeline-list">
@@ -66,7 +78,17 @@ import { publications } from "../data/publications";
       </section>
       <section>
         <h2>Technical Skills</h2>
-        <p>Python, R, React/TypeScript, JavaScript, Stata, MATLAB, LaTeX, Git, LLM prompting, agent workflows, NLP/ML, causal inference, and human-in-the-loop evaluation.</p>
+        <div class="method-grid compact-method-grid">
+          {methodGroups.map((group) => (
+            <article>
+              <h3>{group.title}</h3>
+              <div class="tag-row">
+                {group.items.map((item) => <span>{item}</span>)}
+              </div>
+            </article>
+          ))}
+        </div>
+        <p>Core tools: Python, R, React/TypeScript, JavaScript, Stata, MATLAB, LaTeX, and Git.</p>
       </section>
     </div>
   </section>

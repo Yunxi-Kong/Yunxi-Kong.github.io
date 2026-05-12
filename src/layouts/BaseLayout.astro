@@ -13,6 +13,9 @@ const {
 } = Astro.props;
 
 const pageTitle = title === "Yunxi Kong" ? title : `${title} | Yunxi Kong`;
+const siteUrl = "https://yunxi-kong.github.io";
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
+const ogImage = new URL(profile.portrait, siteUrl).toString();
 const navItems = [
   { href: "/", label: "Home" },
   { href: "/research/", label: "Research" },
@@ -29,11 +32,17 @@ const navItems = [
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#f7f5ef" />
+    <meta name="theme-color" content="#f5f7f9" />
+    <link rel="canonical" href={canonicalUrl} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="/assets/yunxi-kong-headshot.jpg" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
     <link rel="icon" href="/favicon.svg" />
     <title>{pageTitle}</title>
   </head>
@@ -56,7 +65,7 @@ const navItems = [
     <footer class="site-footer">
       <div>
         <strong>Yunxi Kong</strong>
-        <p>Duke University · Economics and Computation · AI, learning, and human-centered systems</p>
+        <p>Duke University / Economics and Computation / AI, learning, and human-centered systems</p>
         <p class="footer-email">{profile.email}</p>
       </div>
       <div class="footer-links">

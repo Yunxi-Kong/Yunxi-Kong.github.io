@@ -18,6 +18,44 @@ export const researchInterests = [
   "Computational social science"
 ];
 
+export const profileHighlights = [
+  {
+    value: "LAK 2026",
+    label: "Accepted paper",
+    text: "Co-authored work on the learning analytics value chain."
+  },
+  {
+    value: "3,720",
+    label: "Papers mapped",
+    text: "Learning analytics publications classified with NLP and LLM workflows."
+  },
+  {
+    value: "29.5K",
+    label: "Students analyzed",
+    text: "Large-scale tutoring data used for causal evaluation of adaptive recommendations."
+  },
+  {
+    value: "Live",
+    label: "AI learning system",
+    text: "Histy annotation environment for history reading and student reasoning."
+  }
+];
+
+export const methodGroups = [
+  {
+    title: "System Building",
+    items: ["React/TypeScript prototypes", "LLM prompting", "Agent workflows", "Annotation interfaces"]
+  },
+  {
+    title: "Empirical Methods",
+    items: ["Causal inference", "IPW and matching", "Causal forests", "Learning analytics"]
+  },
+  {
+    title: "Research Materials",
+    items: ["Corpus curation", "Human-in-the-loop validation", "Education policy analysis", "Geospatial visualization"]
+  }
+];
+
 export const news = [
   {
     date: "2026",
