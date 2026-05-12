@@ -135,10 +135,19 @@ main {
 
 .hero-section {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 360px;
+  grid-template-columns: 340px minmax(0, 1fr);
   gap: clamp(2rem, 5vw, 5rem);
   align-items: center;
   padding: clamp(3.6rem, 8vw, 7rem) 0 3.2rem;
+}
+
+.hero-copy {
+  grid-column: 2;
+}
+
+.portrait-panel {
+  grid-column: 1;
+  grid-row: 1;
 }
 
 .page-label,
@@ -194,6 +203,10 @@ h3 {
   max-width: 760px;
   color: #303946;
   font-size: clamp(1.05rem, 2vw, 1.18rem);
+}
+
+.hero-text + .hero-text {
+  margin-top: 0.9rem;
 }
 
 .interest-list,
@@ -934,6 +947,12 @@ h3 {
   .cv-layout,
   .about-hero {
     grid-template-columns: 1fr;
+  }
+
+  .hero-copy,
+  .portrait-panel {
+    grid-column: auto;
+    grid-row: auto;
   }
 
   .portrait-panel {

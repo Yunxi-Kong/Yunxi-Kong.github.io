@@ -16,15 +16,21 @@ const selectedPublications = publications.slice(0, 3);
 >
   <section class="hero-section">
     <div class="hero-copy">
-      <p class="page-label">Academic Website</p>
+      <p class="page-label">About Me</p>
       <h1>Yunxi Kong</h1>
       <p class="hero-role">M.S. in Economics and Computation, Duke University</p>
       <p class="hero-text">
-        I am developing an interdisciplinary research path across AI, learning systems,
-        human-centered computing, learning analytics, and computational social science.
-        My recent work includes AI-supported history learning environments, causal
-        evaluation of tutoring systems, and large-scale analysis of learning analytics
-        research.
+        I am a master's student in Economics and Computation at Duke University, preparing
+        to pursue doctoral research at the intersection of AI, learning sciences, and
+        human-centered computing. My academic work asks how AI systems can support learning,
+        make student reasoning and interaction more visible, and help researchers evaluate
+        educational technologies with rigorous evidence.
+      </p>
+      <p class="hero-text">
+        My recent projects combine system-building with empirical analysis: AI-assisted
+        history reading and annotation environments, multimodal learning prototypes, causal
+        analysis of intelligent tutoring data, and large-scale classification of learning
+        analytics research.
       </p>
       <div class="interest-list" aria-label="Research interests">
         {researchInterests.map((interest) => <span>{interest}</span>)}
@@ -38,7 +44,7 @@ const selectedPublications = publications.slice(0, 3);
     <aside class="portrait-panel" aria-label="Portrait and contact summary">
       <img src={profile.portrait} alt="Portrait of Yunxi Kong" />
       <div class="portrait-card">
-        <p>Duke University · Durham, NC</p>
+        <p>Duke University / Durham, NC</p>
         <p class="email-text">{profile.email}</p>
         <div class="portrait-links">
           <a href={profile.github} target="_blank" rel="noreferrer">GitHub</a>
