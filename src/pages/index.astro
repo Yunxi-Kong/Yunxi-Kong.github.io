@@ -58,7 +58,9 @@ const selectedPublications = publications.slice(0, 3);
       <div class="education-list">
         {education.map((item) => (
           <article class="education-item">
-            <div class="school-mark" style={`--school-color: ${item.color}`}>{item.mark}</div>
+            <div class="school-logo">
+              <img src={item.logo} alt={item.logoAlt} />
+            </div>
             <div>
               <div class="education-heading">
                 <h3>{item.institution}</h3>

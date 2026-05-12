@@ -43,8 +43,8 @@ export const news = [
 
 export const education = [
   {
-    mark: "D",
-    color: "#012169",
+    logo: "/assets/schools/duke-university.png",
+    logoAlt: "Duke University logo",
     institution: "Duke University",
     place: "Durham, NC",
     degree: "M.S. in Economics and Computation",
@@ -52,8 +52,8 @@ export const education = [
     note: "Relevant areas include human-centered computing, NLP, deep learning, reinforcement learning, AI in education, learning sciences, and causal inference."
   },
   {
-    mark: "S",
-    color: "#d44500",
+    logo: "/assets/schools/syracuse-university.svg",
+    logoAlt: "Syracuse University logo",
     institution: "Syracuse University",
     place: "Syracuse, NY",
     degree: "B.S. in Economics; B.A. in Mathematics",
@@ -61,17 +61,8 @@ export const education = [
     note: "Graduated cum laude; undergraduate economics honors thesis on China's K-12 Double Reduction Policy."
   },
   {
-    mark: "BIT",
-    color: "#0b3d2e",
-    institution: "Beijing Institute of Technology, Zhuhai",
-    place: "Zhuhai, China",
-    degree: "B.A. coursework in International Business",
-    period: "2020-2022",
-    note: "Teaching Assistant for Calculus, 2021-2022."
-  },
-  {
-    mark: "CMU",
-    color: "#c41230",
+    logo: "/assets/schools/carnegie-mellon-university.jpg",
+    logoAlt: "Carnegie Mellon University logo",
     institution: "Carnegie Mellon University",
     place: "Pittsburgh, PA",
     degree: "LearnLab Summer Program",

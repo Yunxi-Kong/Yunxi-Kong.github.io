@@ -355,7 +355,7 @@ h3 {
 
 .education-item {
   display: grid;
-  grid-template-columns: 58px minmax(0, 1fr);
+  grid-template-columns: 124px minmax(0, 1fr);
   gap: 1rem;
   border-top: 1px solid var(--line);
   padding: 1rem 0;
@@ -370,17 +370,23 @@ h3 {
   padding-bottom: 0;
 }
 
-.school-mark {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
+.school-logo {
+  width: 112px;
+  height: 64px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
   display: grid;
   place-items: center;
-  background: var(--school-color);
-  color: #fff;
-  font-size: 0.84rem;
-  font-weight: 850;
-  box-shadow: 0 10px 24px rgba(31, 39, 51, 0.12);
+  background: #fff;
+  overflow: hidden;
+  padding: 0.45rem;
+  box-shadow: 0 10px 24px rgba(31, 39, 51, 0.1);
+}
+
+.school-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .education-heading {
@@ -1012,6 +1018,10 @@ h3 {
     grid-template-columns: 1fr;
   }
 
+  .education-item {
+    row-gap: 1.25rem;
+  }
+
   .project-thumb {
     max-width: 260px;
   }
@@ -1022,9 +1032,9 @@ h3 {
     gap: 0.2rem;
   }
 
-  .school-mark {
-    width: 44px;
-    height: 44px;
+  .school-logo {
+    width: 112px;
+    height: 64px;
   }
 }
 

@@ -21,7 +21,7 @@ export const projects: Project[] = [
     year: "2025-Present",
     category: "Human-centered AI / Learning Systems",
     featured: true,
-    thumbnail: "/assets/project-thumbnails/histy.svg",
+    thumbnail: "/assets/project-thumbnails/histy.jpg",
     summary:
       "An interactive history reading and annotation environment designed to make student thinking more visible during reading.",
     context:
@@ -58,7 +58,7 @@ export const projects: Project[] = [
     year: "2025",
     category: "LLM Agents / Multimodal Learning",
     featured: true,
-    thumbnail: "/assets/project-thumbnails/storyboard-agent.svg",
+    thumbnail: "/assets/project-thumbnails/storyboard-agent.jpg",
     summary:
       "A multi-agent system that transforms a history passage into a comic-style sequence of scenes.",
     context:
@@ -89,7 +89,7 @@ export const projects: Project[] = [
     category: "Learning Analytics / NLP",
     role: "Research Assistant to Prof. Charles Lang",
     featured: true,
-    thumbnail: "/assets/project-thumbnails/value-chain.svg",
+    thumbnail: "/assets/project-thumbnails/value-chain.jpg",
     summary:
       "A computational classification project mapping 3,720 learning analytics publications across stages of the learning analytics value chain.",
     context:
@@ -121,7 +121,7 @@ export const projects: Project[] = [
     title: "AI-Enhanced Multimodal History Learning Prototype",
     year: "2025",
     category: "AI in Education",
-    thumbnail: "/assets/project-thumbnails/multimodal-history.svg",
+    thumbnail: "/assets/project-thumbnails/multimodal-history.jpg",
     summary:
       "A prototype history learning platform combining cross-national textbook comparison, AI-generated visuals, and adaptive quiz generation.",
     context:
@@ -154,7 +154,7 @@ export const projects: Project[] = [
     title: "Causal Impact of Adaptive Recommendations in EdNet",
     year: "2025",
     category: "Causal Inference / Education Data",
-    thumbnail: "/assets/project-thumbnails/ednet-causal.svg",
+    thumbnail: "/assets/project-thumbnails/ednet-causal.jpg",
     summary:
       "A causal inference study estimating how adaptive recommendations in a large-scale intelligent tutoring system affected later student accuracy.",
     context:
@@ -180,7 +180,7 @@ export const projects: Project[] = [
     title: "Structural Patterns of Educational Opportunity in China",
     year: "2024",
     category: "Computational Social Science",
-    thumbnail: "/assets/project-thumbnails/china-education.svg",
+    thumbnail: "/assets/project-thumbnails/china-education.jpg",
     summary:
       "A computational analysis of regional education resource allocation across 31 Chinese provinces.",
     context:
@@ -206,7 +206,7 @@ export const projects: Project[] = [
     title: "Equity in Gifted Education and ELL Identification",
     year: "2025",
     category: "Education Policy / Research Design",
-    thumbnail: "/assets/project-thumbnails/gifted-ell.svg",
+    thumbnail: "/assets/project-thumbnails/gifted-ell.jpg",
     summary:
       "A policy-oriented research proposal examining whether nonverbal assessments could improve gifted identification for ELL students.",
     context:
@@ -229,7 +229,7 @@ export const projects: Project[] = [
     title: "Teaching Strategies in Online Tutoring Dialogue",
     year: "2025",
     category: "Learning Analytics / Causal Analysis",
-    thumbnail: "/assets/project-thumbnails/tutoring-dialogue.svg",
+    thumbnail: "/assets/project-thumbnails/tutoring-dialogue.jpg",
     summary:
       "A short project using online tutoring dialogue data to examine how teaching strategies related to student learning success.",
     context:
