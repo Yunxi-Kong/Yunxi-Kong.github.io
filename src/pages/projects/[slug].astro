@@ -1,0 +1,65 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { projects } from "../../data/projects";
+
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project }
+  }));
+}
+
+const { project } = Astro.props;
+---
+
+<BaseLayout
+  title={project.title}
+  description={project.summary}
+>
+  <article class="project-detail">
+    <header class="detail-hero">
+      <a class="back-link" href="/projects/">Back to projects</a>
+      <p class="page-label">{project.category}</p>
+      <h1>{project.title}</h1>
+      <p>{project.summary}</p>
+      <div class="detail-meta">
+        <span>{project.year}</span>
+        {project.role && <span>{project.role}</span>}
+      </div>
+      {project.links && (
+        <div class="hero-actions">
+          {project.links.map((link) => (
+            <a class="button secondary" href={link.href} target="_blank" rel="noreferrer">{link.label}</a>
+          ))}
+        </div>
+      )}
+    </header>
+
+    <div class="detail-layout">
+      <aside class="detail-sidebar">
+        <h2>Methods</h2>
+        <div class="tag-row vertical-tags">
+          {project.methods.map((method) => <span>{method}</span>)}
+        </div>
+      </aside>
+      <div class="detail-content">
+        <section>
+          <h2>Context</h2>
+          <p>{project.context}</p>
+        </section>
+        <section>
+          <h2>Contributions</h2>
+          <ul>
+            {project.contributions.map((item) => <li>{item}</li>)}
+          </ul>
+        </section>
+        <section>
+          <h2>Outputs and status</h2>
+          <ul>
+            {project.outcomes.map((item) => <li>{item}</li>)}
+          </ul>
+        </section>
+      </div>
+    </div>
+  </article>
+</BaseLayout>

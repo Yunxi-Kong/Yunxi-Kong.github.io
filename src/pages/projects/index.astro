@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionHeader from "../../components/SectionHeader.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import { projects } from "../../data/projects";
+
+const categories = Array.from(new Set(projects.map((project) => project.category)));
+---
+
+<BaseLayout
+  title="Projects"
+  description="Selected academic and research projects by Yunxi Kong across AI in education, HCI, causal inference, and computational social science."
+>
+  <section class="page-hero compact-hero">
+    <p class="page-label">Projects</p>
+    <h1>Selected research and system-building projects</h1>
+    <p>
+      These projects come from my M.S. training, research collaborations, and AI learning
+      system prototypes. They are organized to show both the question behind each project
+      and the methods used to approach it.
+    </p>
+  </section>
+
+  <section class="content-section">
+    <SectionHeader
+      title="Project areas"
+      text="A quick map of the kinds of work represented on this site."
+    />
+    <div class="category-row">
+      {categories.map((category) => <span>{category}</span>)}
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="project-grid">
+      {projects.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </section>
+</BaseLayout>

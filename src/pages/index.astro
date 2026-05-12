@@ -1,0 +1,116 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import PublicationItem from "../components/PublicationItem.astro";
+import { featuredProjects } from "../data/projects";
+import { publications } from "../data/publications";
+import { highlights, news, profile, researchInterests } from "../data/site";
+
+const selectedPublications = publications.slice(0, 3);
+---
+
+<BaseLayout
+  title="Yunxi Kong"
+  description="Academic website of Yunxi Kong, a Duke M.S. student in Economics and Computation working across AI, learning systems, HCI, learning analytics, and computational social science."
+>
+  <section class="hero-section">
+    <div class="hero-copy">
+      <p class="page-label">Academic Website</p>
+      <h1>Yunxi Kong</h1>
+      <p class="hero-role">M.S. in Economics and Computation, Duke University</p>
+      <p class="hero-text">
+        I am developing an interdisciplinary research path across AI, learning systems,
+        human-centered computing, learning analytics, and computational social science.
+        My recent work includes AI-supported history learning environments, causal
+        evaluation of tutoring systems, and large-scale analysis of learning analytics
+        research.
+      </p>
+      <div class="interest-list" aria-label="Research interests">
+        {researchInterests.map((interest) => <span>{interest}</span>)}
+      </div>
+      <div class="hero-actions">
+        <a class="button primary" href="/projects/">View Projects</a>
+        <a class="button secondary" href={profile.cv}>Download CV</a>
+        <a class="button text" href={`mailto:${profile.email}`}>Contact</a>
+      </div>
+    </div>
+    <aside class="portrait-panel" aria-label="Portrait and contact summary">
+      <img src={profile.portrait} alt="Portrait of Yunxi Kong" />
+      <div class="portrait-card">
+        <p>Duke University · Durham, NC</p>
+        <div class="portrait-links">
+          <a href={`mailto:${profile.email}`}>Email</a>
+          <a href={profile.github} target="_blank" rel="noreferrer">GitHub</a>
+          <a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <section class="summary-strip" aria-label="Highlights">
+    {highlights.map((item) => (
+      <div>
+        <p>{item.label}</p>
+        <strong>{item.value}</strong>
+      </div>
+    ))}
+  </section>
+
+  <section class="content-section">
+    <SectionHeader
+      kicker="Selected Work"
+      title="Projects at the intersection of learning, computation, and interaction"
+      text="The project pages collect system-building work, empirical analysis, and course research from my master's training."
+    />
+    <div class="project-grid featured-grid">
+      {featuredProjects.map((project) => <ProjectCard project={project} />)}
+    </div>
+    <div class="section-link">
+      <a href="/projects/">Browse all projects</a>
+    </div>
+  </section>
+
+  <section class="content-section two-column-section">
+    <div>
+      <SectionHeader
+        kicker="Publications"
+        title="Publications, manuscripts, and selected research"
+        text="This section separates accepted work from manuscripts and selected course research so the record stays clear."
+      />
+      <div class="publication-list short-list">
+        {selectedPublications.map((publication) => <PublicationItem publication={publication} />)}
+      </div>
+      <div class="section-link">
+        <a href="/publications/">View publication list</a>
+      </div>
+    </div>
+    <aside class="news-panel">
+      <h2>News</h2>
+      <div class="news-list">
+        {news.map((item) => (
+          <article>
+            <time>{item.date}</time>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+    </aside>
+  </section>
+
+  <section class="content-section bridge-section">
+    <div>
+      <p class="eyebrow">More Context</p>
+      <h2>Additional academic and education technology materials</h2>
+      <p>
+        This website keeps the front page focused on academic materials. For my broader
+        education technology work in China, visit Ingenius Prime. For project details,
+        papers, code, and CV materials, use the navigation links above.
+      </p>
+    </div>
+    <div class="bridge-actions">
+      <a class="button primary" href={profile.edtech} target="_blank" rel="noreferrer">Visit Ingenius Prime</a>
+      <a class="button secondary" href="/research/">Research interests</a>
+    </div>
+  </section>
+</BaseLayout>

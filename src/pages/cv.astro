@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { education, profile } from "../data/site";
+import { projects } from "../data/projects";
+import { publications } from "../data/publications";
+---
+
+<BaseLayout
+  title="CV"
+  description="Curriculum vitae and academic background of Yunxi Kong."
+>
+  <section class="page-hero compact-hero cv-hero">
+    <div>
+      <p class="page-label">CV</p>
+      <h1>Curriculum Vitae</h1>
+      <p>
+        This page provides a web summary of my current CV. A PDF version is available
+        for applications and reference.
+      </p>
+    </div>
+    <a class="button primary" href={profile.cv}>Download PDF</a>
+  </section>
+
+  <section class="cv-layout">
+    <aside class="cv-sidebar">
+      <h2>Contact</h2>
+      <p><a href={`mailto:${profile.email}`}>{profile.email}</a></p>
+      <p><a href={profile.github} target="_blank" rel="noreferrer">GitHub</a></p>
+      <p><a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a></p>
+    </aside>
+    <div class="cv-main">
+      <section>
+        <h2>Education</h2>
+        <div class="timeline-list">
+          {education.map((item) => (
+            <article>
+              <time>{item.period}</time>
+              <h3>{item.institution}</h3>
+              <p>{item.degree}</p>
+              <p>{item.note}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+      <section>
+        <h2>Selected Research Experience</h2>
+        <div class="cv-project-list">
+          {projects.slice(0, 6).map((project) => (
+            <article>
+              <h3>{project.title}</h3>
+              <p>{project.summary}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+      <section>
+        <h2>Publications and Manuscripts</h2>
+        <div class="cv-project-list">
+          {publications.slice(0, 3).map((publication) => (
+            <article>
+              <h3>{publication.title}</h3>
+              <p>{publication.authors}. {publication.status}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+      <section>
+        <h2>Technical Skills</h2>
+        <p>Python, R, React/TypeScript, JavaScript, Stata, MATLAB, LaTeX, Git, LLM prompting, agent workflows, NLP/ML, causal inference, and human-in-the-loop evaluation.</p>
+      </section>
+    </div>
+  </section>
+</BaseLayout>

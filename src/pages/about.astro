@@ -1,0 +1,47 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { education, profile } from "../data/site";
+---
+
+<BaseLayout
+  title="About"
+  description="About Yunxi Kong."
+>
+  <section class="about-hero">
+    <img src={profile.portrait} alt="Portrait of Yunxi Kong" />
+    <div>
+      <p class="page-label">About</p>
+      <h1>About Yunxi Kong</h1>
+      <p>
+        I came to Duke's M.S. in Economics and Computation with a background in
+        economics and mathematics, and I have been using the program to build a
+        research path that connects quantitative social science, computation, and
+        learning. My recent projects focus on AI-supported learning environments,
+        causal evaluation of educational technologies, and computational analysis
+        of learning systems.
+      </p>
+      <p>
+        Outside this academic website, I also maintain education technology work
+        through Ingenius Prime.
+      </p>
+      <div class="hero-actions">
+        <a class="button primary" href="/projects/">View Projects</a>
+        <a class="button secondary" href={profile.edtech} target="_blank" rel="noreferrer">Ingenius Prime</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <h2>Education and training</h2>
+    <div class="timeline-list">
+      {education.map((item) => (
+        <article>
+          <time>{item.period}</time>
+          <h3>{item.institution}</h3>
+          <p>{item.degree} · {item.place}</p>
+          <p>{item.note}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,26 @@
+---
+import type { Publication } from "../data/publications";
+
+type Props = {
+  publication: Publication;
+};
+
+const { publication } = Astro.props;
+---
+
+<article class="publication-item">
+  <div class="publication-year">{publication.year}</div>
+  <div>
+    <p class="publication-type">{publication.type}</p>
+    <h3>{publication.title}</h3>
+    <p class="authors">{publication.authors}</p>
+    <p>{publication.status}</p>
+    {publication.links && (
+      <div class="inline-links">
+        {publication.links.map((link) => (
+          <a href={link.href} target="_blank" rel="noreferrer">{link.label}</a>
+        ))}
+      </div>
+    )}
+  </div>
+</article>

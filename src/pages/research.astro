@@ -1,0 +1,63 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+
+const directions = [
+  {
+    title: "Learning as decision-making and information updating",
+    text:
+      "Economics helps frame how learners allocate attention, time, effort, and beliefs in response to incentives and feedback."
+  },
+  {
+    title: "Learning as a latent but computable state",
+    text:
+      "Computational systems infer learning from behavior, errors, trajectories, annotations, and interaction logs rather than observing it directly."
+  },
+  {
+    title: "Learning as a human-machine co-adaptive system",
+    text:
+      "AI systems respond to human behavior, and learners respond to machine feedback. This creates a feedback loop that can be studied, designed, and evaluated."
+  }
+];
+---
+
+<BaseLayout
+  title="Research"
+  description="Research interests and agenda of Yunxi Kong."
+>
+  <section class="page-hero compact-hero">
+    <p class="page-label">Research</p>
+    <h1>Research interests in learning, computation, and human-centered systems</h1>
+    <p>
+      My current work is exploratory and interdisciplinary. I am especially interested
+      in how AI systems can support learning, how learner behavior can be modeled from
+      interaction data, and how educational technologies should be designed and evaluated
+      in real contexts.
+    </p>
+  </section>
+
+  <section class="content-section">
+    <SectionHeader
+      title="An emerging research agenda"
+      text="This structure comes from my M.S. portfolio and will evolve as my PhD direction becomes more focused."
+    />
+    <div class="agenda-grid">
+      {directions.map((direction, index) => (
+        <article>
+          <span>{String(index + 1).padStart(2, "0")}</span>
+          <h2>{direction.title}</h2>
+          <p>{direction.text}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="content-section note-section">
+    <h2>Current questions</h2>
+    <ul>
+      <li>How can AI-supported learning tools help students externalize reasoning rather than only receive content?</li>
+      <li>How can causal and computational methods evaluate learning technologies beyond simple engagement metrics?</li>
+      <li>How should human-centered learning systems balance automation, interpretation, and teacher or student agency?</li>
+    </ul>
+  </section>
+</BaseLayout>

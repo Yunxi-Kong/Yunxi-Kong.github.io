@@ -1,0 +1,37 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PublicationItem from "../components/PublicationItem.astro";
+import { publications } from "../data/publications";
+
+const groups = ["Accepted", "Under Review", "Selected Research"] as const;
+---
+
+<BaseLayout
+  title="Publications"
+  description="Publications, manuscripts, and selected research by Yunxi Kong."
+>
+  <section class="page-hero compact-hero">
+    <p class="page-label">Publications</p>
+    <h1>Publications, manuscripts, and selected research</h1>
+    <p>
+      This page separates accepted work from manuscripts and selected research projects
+      so the status of each item is explicit.
+    </p>
+  </section>
+
+  <section class="content-section">
+    {groups.map((group) => {
+      const items = publications.filter((publication) => publication.type === group);
+      return (
+        items.length > 0 && (
+          <section class="publication-group">
+            <h2>{group}</h2>
+            <div class="publication-list">
+              {items.map((publication) => <PublicationItem publication={publication} />)}
+            </div>
+          </section>
+        )
+      );
+    })}
+  </section>
+</BaseLayout>
