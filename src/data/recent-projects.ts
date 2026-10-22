@@ -14,17 +14,20 @@ export const recentProjects: Project[] = [
     contributions: [
       "Developed and iterated image-navigation and annotation interactions, including links between anatomical markers and explanatory text.",
       "Worked on editable case content, study cards, references, and teaching workflows in response to clinician feedback.",
+      "Developed a pilot for browsing normal reference sequences without leaving the case, while keeping anatomical points attached to their source sequence.",
+      "Refined image fitting and pointer-to-image mapping, with regression checks for resizing, rotation, zoom, and pan.",
       "Maintained an independent experimental release with separate editing data, explicit content comparison, and regression checks.",
       "Explored 3D and immersive prototypes as extensions to the browser-based learning experience."
     ],
     methods: ["Interactive visualization", "Clinician collaboration", "Content workflows", "Versioned releases"],
     decisions: [
-      { title: "Keep the case in view", text: "Image navigation should preserve the learner's clinical context. Current development separates sequence selection from case selection, so inspecting another view does not require starting the case again." },
+      { title: "Preserve context without implying correspondence", text: "The pilot separates sequence selection from case selection. A learner can browse normal reference images while keeping the case explanation in view, but only the original T2 sequence carries the case's anatomical points. Other reference sequences are explicitly labeled and offer a return to the annotated view. Points are not automatically transferred: visual proximity alone does not establish correspondence between images." },
+      { title: "Test geometry, not just successful clicks", text: "A focus-view check exposed an image being stretched to fill a rectangular panel. The revised viewer preserves the source raster's aspect ratio, accounts for rotation when fitting the canvas, and maps pointer positions back through the display transformation. Regression checks cover different viewport and raster shapes, quarter-turn rotations, zoom and pan, and returning to the four-view layout. These are checks on software geometry, not evidence of diagnostic accuracy." },
       { title: "Treat expert edits as part of the system", text: "Physicians continue to revise teaching content while interfaces change. Independent experimental data and explicit merges protect those edits; a successful software deployment is not a substitute for content integrity." },
       { title: "Connect evidence and explanation", text: "Markers, teaching text, supporting images, and references need to point to the same clinical concept. This makes their relationship inspectable instead of leaving the learner to reconstruct it across disconnected panels." }
     ],
-    outcomes: ["An actively maintained browser-based Atlas and a separate experimental release.", "A continuing design and development process informed by clinician feedback."],
-    limitations: "This is a teaching-system development project, not a clinically validated diagnostic product. AI-generated vignettes and literature summaries remain development directions; no learning-effectiveness claim is made here. Immersive prototypes are distinct from the deployed browser experience.",
+    outcomes: ["An actively maintained browser-based Atlas and a separate experimental release.", "An October 2026 pilot combining context-preserving normal-sequence browsing with geometry-tested view controls in the experimental release.", "A continuing design and development process informed by clinician feedback."],
+    limitations: "This is a teaching-system development project, not a clinically validated diagnostic product. The sequence-browser pilot is limited to one case context and uses normal reference images, not additional patient-specific scans. Cross-sequence annotation transfer remains outside the implemented pilot. Experimental changes are reviewed separately from the physician-edited production site. AI-generated vignettes and literature summaries remain development directions; no learning-effectiveness claim is made here. Immersive prototypes are distinct from the deployed browser experience.",
     links: [{ label: "ACMLab", href: "https://www.acmlab.org/team" }]
   },
   {
