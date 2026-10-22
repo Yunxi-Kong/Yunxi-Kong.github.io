@@ -21,9 +21,9 @@ import { writing } from "../data/writing";
     <div class="hero-copy">
       <h1>About Me</h1>
       <p>I am a Research Assistant at the <a href={profile.lab}>Advanced Computational Medicine Laboratory</a> at the University of North Carolina at Chapel Hill, working with <a href="https://www.acmlab.org/">Prof. Guorong (Rudy) Wu</a>. I completed my M.S. in Economics and Computation at Duke University in May 2026, following undergraduate study in economics and mathematics at Syracuse University.</p>
-      <p>My interests lie in <strong>societal computing, computational social science, and human-AI interaction</strong>. I want to understand how AI changes what people can do, how they make decisions, and how information moves through social environments. I approach these questions by building interactive systems and examining the evidence they produce.</p>
-      <p>Recently, I have been developing the <a href="/projects/asnr-brain-atlas/">ASNR Interactive Brain Atlas</a> with clinician feedback, contributing visualization and tool integrations to <a href="/projects/cyberneuro/">CyberNeuro</a>, and exploring traceable multi-agent interaction in <a href="/projects/motiverse/">Motiverse</a>. Education and scientific work provide concrete settings for these broader questions.</p>
-      <p>I am preparing for doctoral research and welcome conversations about human-AI systems, social simulation, and rigorous evaluation.</p>
+      <p>I am interested in <strong>what becomes possible for people as AI becomes more capable</strong>. Better answers are part of that story, but so are the ability to act on them, coordinate with others, and choose which goals to pursue. These questions draw me toward societal computing, computational social science, and human-AI interaction.</p>
+      <p>My approach connects <strong>social science, AI, and engineering</strong>: understand the constraints people face, build systems that could change them, and study what actually changes. My current work includes interactive learning environments, scientific tools, and multi-agent worlds.</p>
+      <p>I am preparing for doctoral research. My <a href="/research/">research agenda</a> connects individual capability with collective action; in <a href="/writing/">my essays</a>, I explore the larger questions behind the systems I build.</p>
       <p class="interest-line">{researchInterests.join(" · ")}</p>
       <div class="inline-links hero-actions"><a href="/research/">Research questions</a><a href="/projects/">Projects</a><a href="/writing/">Writing</a></div>
     </div>
@@ -58,8 +58,8 @@ import { writing } from "../data/writing";
     <div class="publication-list">{publications.map((publication) => <PublicationItem publication={publication} />)}</div>
   </section>
   <section class="content-section" aria-labelledby="writing">
-    <div class="section-heading"><h2 id="writing">Recent Writing</h2><a href="/writing/">All notes</a></div>
-    <div class="writing-list">{writing.map((post) => <article><div class="card-meta">{post.topic}</div><h3><a href={post.url}>{post.title}</a></h3><p>{post.description}</p></article>)}</div>
+    <div class="section-heading"><h2 id="writing">Selected Writing</h2><a href="/writing/">All writing</a></div>
+    <div class="writing-list">{writing.slice(0,3).map((post) => <article><div class="card-meta">{post.kind} · {post.topic}</div><h3><a href={post.url}>{post.title}</a></h3><p>{post.description}</p></article>)}</div>
   </section>
   <section class="content-section contact-section" id="contact">
     <h2>Elsewhere</h2>

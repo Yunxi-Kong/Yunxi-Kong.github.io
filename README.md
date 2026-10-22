@@ -35,8 +35,9 @@ The site is deployed through GitHub Actions to GitHub Pages.
 - `src/data/recent-projects.ts`: recent work, individual contributions, status, and scope.
 - `src/data/projects.ts`: earlier projects and the shared project schema.
 - `src/data/publications.ts`: verified publications, public preprints, and BibTeX.
-- `src/data/writing.ts` and `src/pages/writing/*.md`: research notes and their metadata.
+- `src/data/writing.ts` and `src/pages/writing/*.md`: essays, research notes, and their metadata.
 - `public/assets/project-thumbnails/`: real project screenshots and paper figures.
+- `public/assets/essays/`: conceptual editorial illustrations and responsive variants.
 
 The original March 20, 2026 PDF is intentionally preserved as an archive. The web CV
 contains the October update. Do not label the old PDF as current or replace it silently.
@@ -59,7 +60,20 @@ The academic homepage and Writing use separate layouts. Article typography and
 figures live in `src/styles/writing.css`; the shared layout is `NoteLayout.astro`.
 Add a self-hosted image with intrinsic dimensions and descriptive alt text to each
 entry in `src/data/writing.ts` for the index and social preview. In the Markdown
-body, use an HTML `figure.article-figure` with a source caption and full-size link.
+body, use an HTML `figure.article-figure` with a source caption. Add
+`editorial-figure` for original conceptual art, and responsive `srcset` variants
+where available. Keep the original aspect ratio; do not crop away the argument.
+
+The homepage stays academic and concise. Essays develop the author's questions
+and arguments, not internal project implementation logs. The current approach is
+social science, AI, and engineering; its research questions connect individual
+capability, collective action, and institutions. This is a developing agenda, not
+a claim to an established new theory. Keep project contributions brief and factual.
+
+Use concrete openings, purposeful illustrations, substantive counterarguments,
+and a clear line of reasoning. Do not replace an argument with a stack of slogans,
+generic trend forecasts, or invented experiences. Image-generation prompts and
+provenance are recorded in `docs/editorial-illustrations.md`.
 
 Only use real, approved project artifacts as evidence. Label conceptual examples
 as illustrations, not measurements or study results. The simulation note uses
@@ -71,3 +85,13 @@ Editorial references (not copied templates):
 - [Distill: Communicating with Interactive Articles](https://distill.pub/2020/communicating-with-interactive-articles/)
 - [Josh W. Comeau: An Interactive Guide to Flexbox](https://www.joshwcomeau.com/css/interactive-guide-to-flexbox/)
 - [Bartosz Ciechanowski: Mechanical Watch](https://ciechanow.ski/mechanical-watch/)
+
+Recent prose and argument-structure references (April-October 2026):
+- [Anthropic: How employment is changing at Anthropic](https://www.anthropic.com/research/employment-at-anthropic) (October 16)
+- [Anthropic: Measurements for understanding the pace of AI development](https://www.anthropic.com/institute/measuring-pace-of-ai-development) (September)
+- [Ethan Mollick: Agency and Agents](https://www.oneusefulthing.org/p/agency-and-agents) (August 31)
+- [Ethan Mollick: The Overhang](https://www.oneusefulthing.org/p/the-overhang) (September 18)
+- [Ethan Mollick: Choosing to Stay Human](https://www.oneusefulthing.org/p/choosing-to-stay-human) (May 26)
+
+This is a dated editorial sample, not a verified ranking of the most-liked posts.
+Source arguments, experiences, and branding are not presented as the author's own.

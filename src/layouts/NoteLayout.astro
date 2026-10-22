@@ -13,19 +13,19 @@ const sections = headings.filter(heading => heading.depth === 2);
 <BaseLayout title={post.title} description={post.description} image={post.image.src} article publishedDate={post.date}>
   <header class="page-hero note-header">
     <a class="back-link" href="/writing/">All writing</a>
-    <p class="page-label">{post.topic} · Working perspective</p>
+    <p class="page-label">{post.kind} · {post.topic}</p>
     <h1>{post.title}</h1>
     <p class="lede">{post.description}</p>
     <div class="reading-meta"><span>Yunxi Kong</span><time datetime={post.date}>{formatDate(post.date)}</time><span>{post.minutes} min read</span></div>
   </header>
   <div class="article-shell note-shell">
     <article class="prose note-prose"><slot /></article>
-    <nav class="article-toc" aria-label="In this note"><h2>In This Note</h2><ol>{sections.map(h=><li><a href={`#${h.slug}`}>{h.text}</a></li>)}</ol><a class="toc-back" href="/writing/">All research notes</a></nav>
+    <nav class="article-toc" aria-label="In this note">{post.question && <p class="essay-question">{post.question}</p>}<h2>Contents</h2><ol>{sections.map(h=><li><a href={`#${h.slug}`}>{h.text}</a></li>)}</ol><a class="toc-back" href="/writing/">All writing</a></nav>
     <details class="note-mobile-toc"><summary>In this note</summary><nav aria-label="In this note"><ol>{sections.map(h=><li><a href={`#${h.slug}`}>{h.text}</a></li>)}</ol></nav></details>
   </div>
   <footer class="note-footer">
     <h2>Continue Reading</h2>
-    <div class="related-notes">{writing.filter(item => item.slug !== post.slug).map(item => <article><p class="page-label">{item.topic}</p><h3><a href={item.url}>{item.title}</a></h3></article>)}</div>
+    <div class="related-notes">{writing.filter(item => item.slug !== post.slug).slice(0,2).map(item => <article><p class="page-label">{item.kind} · {item.topic}</p><h3><a href={item.url}>{item.title}</a></h3></article>)}</div>
     <a class="back-link" href="/research/">Explore my research questions</a>
   </footer>
 </BaseLayout>

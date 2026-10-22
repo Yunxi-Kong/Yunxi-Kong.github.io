@@ -3,18 +3,28 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { profile } from "../data/site";
 ---
 <BaseLayout title="About" description="Yunxi Kong's path from economics and mathematics to interactive AI systems and societal computing.">
-  <header class="page-hero"><p class="page-label">About</p><h1>From economics to interactive AI systems</h1><p class="lede">I am Yunxi Kong, a researcher and builder interested in how computational systems change human possibilities.</p></header>
+  <header class="page-hero"><p class="page-label">About</p><h1>Why I build</h1><p class="lede">I want to understand how better machines can give people more room to think, choose, and act.</p></header>
   <article class="prose standalone-prose">
-    <h2>Quantitative foundations</h2>
-    <p>At Syracuse University, I studied economics and mathematics. My honors thesis examined China's K-12 Double Reduction Policy, an experience that drew me toward questions about policy, incentives, and unequal access to opportunity. I graduated cum laude in 2024.</p>
-    <h2>Learning through building</h2>
-    <p>During my M.S. in Economics and Computation at Duke, I began connecting those questions to working software and empirical analysis. I built history-reading and annotation environments, explored intelligent-tutoring data, and contributed to <em>The Learning Analytics Value Chain</em>, published at LAK 2026. I also participated in Carnegie Mellon University's LearnLab Summer Program in 2025.</p>
-    <h2>Systems in real research settings</h2>
-    <p>At UNC ACMLab, I work with Prof. Guorong Wu on interactive systems. Recent work includes developing the ASNR Interactive Brain Atlas with clinician feedback and contributing visualization and tool integrations to CyberNeuro. These projects have made content integrity, expert review, and inspectable workflows concrete design problems for me.</p>
-    <p>Alongside this work, Motiverse explores how character dialogue can connect to persistent consequences in an interactive literary world. My model-evaluation work asks how the measurements used to assess AI can themselves introduce selection effects.</p>
-    <h2>Where I am heading</h2>
-    <p>I am preparing for doctoral research in societal computing and computational social science, with human-AI interaction as an important bridge. I want to develop systems that are useful to people and research methods that make their effects understandable.</p>
+    <p>I came to these questions through economics and mathematics at Syracuse, followed by Economics and Computation at Duke. Economics gave me a way to think about choices under constraints: who has access, what incentives shape a decision, and why a useful idea may never become an available option. Building software gave me a way to ask what happens when some of those constraints can be changed.</p>
+    <p>I am now a Research Assistant at UNC ACMLab, working with Prof. Guorong Wu. Across learning environments, scientific tools, and interactive worlds, I keep returning to the same distinction: a more capable system is not automatically a more capable person.</p>
+    <h2>The question behind the projects</h2>
+    <p>If intelligence becomes easier to access, what remains difficult? Understanding a result, deciding what matters, coordinating with other people, and obtaining the authority to act may become more important, not less. I want to study these questions together, rather than treating the technical system and its social setting as separate problems.</p>
+    <p>That is the direction I hope to pursue in doctoral research: <strong>societal computing and computational social science, grounded in building human-AI systems</strong>. Social science helps me ask which mechanism matters. AI opens new possibilities. Engineering makes an idea concrete enough to use and test.</p>
+    <p>The essays below develop this perspective. They are arguments and research questions, not claims that I have already answered them.</p>
+    <div class="about-reading">
+      <a href="/writing/the-next-bottleneck/"><img src="/assets/essays/next-bottleneck-720.webp" width="720" height="480" alt="Conceptual illustration of plans and collective action" loading="lazy" /><div><strong>The Next Bottleneck</strong><span>What becomes scarce when intelligence becomes cheaper?</span></div></a>
+      <a href="/writing/human-capability/"><img src="/assets/essays/cognitive-exoskeleton-720.webp" width="720" height="480" alt="Conceptual illustration of a person directing their tools" loading="lazy" /><div><strong>The Cognitive Exoskeleton</strong><span>Support that expands a person's agency without taking over their goals.</span></div></a>
+    </div>
     <p>Outside these academic projects, my education technology work in China is collected at <a href={profile.edtech}>Ingenius Prime</a>.</p>
     <p>Contact: <span class="email-text">{profile.email}</span></p>
   </article>
 </BaseLayout>
+<style>
+  .about-reading { display: grid; gap: 0; margin: 1.6rem 0 2rem; }
+  .about-reading a { display: grid; grid-template-columns: 144px minmax(0, 1fr); gap: 1.2rem; align-items: center; border-top: 1px solid var(--line); padding: 1rem 0; text-decoration: none; }
+  .about-reading img { width: 100%; height: auto; aspect-ratio: 3/2; }
+  .about-reading strong { display: block; font-size: 1.05rem; }
+  .about-reading span { display: block; color: var(--muted); font-size: .9rem; margin-top: .25rem; }
+  .about-reading a:hover strong { text-decoration: underline; }
+  @media (max-width: 520px) { .about-reading a { grid-template-columns: 80px minmax(0, 1fr); gap: .8rem; } }
+</style>

@@ -1,6 +1,6 @@
 # Project Visuals
 
-The October 2026 update uses research artifacts, not illustrative placeholders.
+Project pages use research artifacts, not illustrative placeholders.
 
 | File | Source | Description |
 | --- | --- | --- |
@@ -12,7 +12,14 @@ The original portrait, institutional marks, and earlier project figures were ret
 Institutional marks identify educational affiliations, not sponsorship or endorsement.
 New raster files were resized and exported without source-file metadata.
 
-The Writing section reuses these three approved artifacts, with captions distinguishing
+The research notes reuse approved artifacts, with captions distinguishing
 system interfaces and architecture from empirical evidence. The message-delivery
 example is an original HTML/CSS conceptual illustration. Its fictional statements
 and events are explicitly labeled and are not presented as Motiverse execution logs.
+
+## Editorial Illustrations
+
+The two longer essays use four original AI-generated conceptual illustrations, each
+identified in its caption. They are not project screenshots, real experiments, or
+portraits of the author. Selected images and responsive variants are under
+`public/assets/essays/`. See [generation prompts and provenance](docs/editorial-illustrations.md).

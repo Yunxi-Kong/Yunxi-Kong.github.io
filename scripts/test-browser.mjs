@@ -44,9 +44,10 @@ try {
         const accessibility = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"]).analyze();
         assert.deepEqual(accessibility.violations.map(v => ({ id: v.id, targets: v.nodes.map(n => n.target) })), [], `${route}: accessibility`);
       }
-      if ([1440, 390].includes(width) && ["/", "/projects/asnr-brain-atlas/", "/projects/motiverse/", "/writing/", "/writing/human-capability/", "/writing/simulation-and-evidence/", "/writing/interaction-logs/", "/publications/"].includes(route)) {
+      if ([1440, 390].includes(width) && ["/", "/about/", "/research/", "/projects/asnr-brain-atlas/", "/projects/motiverse/", "/writing/", "/writing/the-next-bottleneck/", "/writing/human-capability/", "/writing/simulation-and-evidence/", "/writing/interaction-logs/", "/publications/"].includes(route)) {
         await page.screenshot({ path: `test-results/${width}-${route.replaceAll("/", "_")}.png`, fullPage: true });
         if (route === "/") await page.screenshot({ path: `test-results/${width}-home-viewport.png` });
+        if (route === "/writing/the-next-bottleneck/") await page.screenshot({ path: `test-results/${width}-essay-viewport.png` });
       }
       report.push({ width, route, ...metrics });
     }
@@ -57,6 +58,15 @@ try {
     assert.ok(await page.locator("#main").evaluate(e => document.activeElement === e));
     await page.getByRole("navigation", { name: "Primary navigation" }).getByRole("link", { name: "Writing", exact: true }).click();
     await page.waitForURL("**/writing/");
+    await page.getByRole("link", {name:"Read essay: The Next Bottleneck", exact:true}).click();
+    await page.waitForURL("**/writing/the-next-bottleneck/");
+    assert.equal(await page.locator(".editorial-figure").count(), 2);
+    assert.equal(await page.locator(".argument-map dt").count(), 3);
+    for (const figure of await page.locator(".editorial-figure").all()) {
+      assert.match(await figure.locator("figcaption").innerText(), /AI-generated conceptual illustration/);
+      const dimensions = await figure.locator("img").evaluate(i => ({width:i.width, height:i.height, naturalWidth:i.naturalWidth, naturalHeight:i.naturalHeight}));
+      assert.ok(Math.abs(dimensions.width / dimensions.height - dimensions.naturalWidth / dimensions.naturalHeight) < .02, "Editorial illustration must not be cropped or distorted");
+    }
     await page.goto(base + "/publications/");
     await page.locator("summary").first().click();
     assert.equal(await page.locator("details").first().getAttribute("open"), "");
