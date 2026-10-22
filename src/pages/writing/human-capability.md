@@ -23,6 +23,11 @@ Evidence cuts across all three. This is a working perspective, not a claim to ha
 
 In the [ASNR Interactive Brain Atlas](/projects/asnr-brain-atlas/), a learner can encounter an image, an anatomical marker, and a clinician-authored explanation. Putting them on one screen is a useful engineering step. It does not establish that the learner understands the relationship.
 
+<figure class="article-figure">
+  <img src="/assets/project-thumbnails/asnr.webp" width="1800" height="854" alt="ASNR Atlas screen combining three anatomical planes, a 3D view, a case image, and clinician-authored study cards" loading="lazy" decoding="async" />
+  <figcaption><strong>From the system: ASNR Interactive Brain Atlas.</strong> Anatomical views, case material, and study cards share one workspace. This development screenshot shows an interface, not evidence of improved learning.<span class="figure-links"><a href="/assets/project-thumbnails/asnr.webp">Full-size image</a><a href="/projects/asnr-brain-atlas/">Project and my contributions</a></span></figcaption>
+</figure>
+
 A possible next question is whether asking someone to inspect a region before revealing an explanation changes how they reason about a later case. That would require an evaluation designed around the question, not simply a count of clicks or completed study cards. It might also reveal a tradeoff: an interaction that slows immediate completion could support later understanding, or it could merely impose unnecessary effort.
 
 My earlier [Histy project](/projects/histy-ai-history-annotation/) raises a related question. An annotation can make an interpretation visible, but an AI-generated interpretation and a learner's own reasoning should not be treated as equivalent evidence of understanding.
@@ -36,7 +41,9 @@ I would separate several outcomes rather than collapse them into one success sco
 - **Retention and transfer:** Does performance persist on a later or unfamiliar task?
 - **Agency and correction:** Can the person recognize a system error and change course?
 
-These outcomes can conflict. A useful study should make those conflicts visible. Delayed performance also has multiple possible causes, so a later test alone does not identify the effect of an earlier interaction.
+> A useful study should make conflicts between immediate performance, understanding, and agency visible.
+
+Delayed performance also has multiple possible causes, so a later test alone does not identify the effect of an earlier interaction.
 
 ## Why this direction matters to me
 

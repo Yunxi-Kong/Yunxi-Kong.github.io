@@ -22,6 +22,8 @@ run `npm run test:browser`. On Windows this uses installed Chrome; elsewhere run
 `npx playwright install chromium` first. `TEST_URL` and `BROWSER_CHANNEL` can override
 these defaults. Checks cover all routes at 1440, 768, 390, and 320 pixels, keyboard
 navigation, citations, image loading, and automated WCAG accessibility checks.
+Writing checks also exercise the evidence example with mouse and keyboard, without
+JavaScript, and in print layout.
 
 ## Deployment
 
@@ -50,3 +52,22 @@ no trackers, remote fonts, forms, cookies, or executable client-side JavaScript.
 
 New routes must appear in the generated sitemap. Before publishing, run the checks
 above, review desktop and mobile layouts, inspect new images, and verify external links.
+
+## Writing Design
+
+The academic homepage and Writing use separate layouts. Article typography and
+figures live in `src/styles/writing.css`; the shared layout is `NoteLayout.astro`.
+Add a self-hosted image with intrinsic dimensions and descriptive alt text to each
+entry in `src/data/writing.ts` for the index and social preview. In the Markdown
+body, use an HTML `figure.article-figure` with a source caption and full-size link.
+
+Only use real, approved project artifacts as evidence. Label conceptual examples
+as illustrations, not measurements or study results. The simulation note uses
+native radio controls and CSS to compare three artifacts; no client script, API,
+tracking, or backend is required. Hidden panels retain their layout space to avoid
+shifting the following text, and all panels are visible when printed.
+
+Editorial references (not copied templates):
+- [Distill: Communicating with Interactive Articles](https://distill.pub/2020/communicating-with-interactive-articles/)
+- [Josh W. Comeau: An Interactive Guide to Flexbox](https://www.joshwcomeau.com/css/interactive-guide-to-flexbox/)
+- [Bartosz Ciechanowski: Mechanical Watch](https://ciechanow.ski/mechanical-watch/)

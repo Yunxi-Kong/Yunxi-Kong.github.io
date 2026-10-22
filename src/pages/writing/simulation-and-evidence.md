@@ -7,11 +7,55 @@ A convincing conversation with an AI character is an experience. A record showin
 
 Working on [Motiverse](/projects/motiverse/) has made these distinctions important to me. I am interested in multi-agent environments as a bridge between interactive systems and computational social science, but that bridge requires more than believable dialogue.
 
+<figure class="article-figure">
+  <img src="/assets/project-thumbnails/motiverse.webp" width="1313" height="363" alt="Three Motiverse manuscript panels: character conversation and town events, a counterfactual letter, and a retrospective event trace" loading="lazy" decoding="async" />
+  <figcaption><strong>From the system: three views of Motiverse.</strong> Conversation, a projected future, and a retrospective event trace appear as distinct artifacts in the working manuscript. Their existence does not establish behavioral validity.<span class="figure-links"><a href="/assets/project-thumbnails/motiverse.webp">Full-size figure</a><a href="/projects/motiverse/">Project and my contributions</a></span></figcaption>
+</figure>
+
 ## Words, events, and possible futures
 
 Motiverse separates three kinds of output: what characters say, what the shared world records as having happened, and what the system projects might happen later.
 
 Suppose a visitor asks one character to deliver a message to another. A fluent response saying "I will tell them" is not proof that the recipient received the information. A later account in which the message changed someone's life is not proof that the corresponding event was committed to the world.
+
+<fieldset class="evidence-example" aria-describedby="evidence-scope">
+  <legend>Did the message arrive?</legend>
+  <p class="example-scope" id="evidence-scope">Illustrative scenario, not a recorded Motiverse run. Each view considers a different artifact in isolation.</p>
+  <input type="radio" id="evidence-dialogue" name="evidence-kind" value="dialogue" checked />
+  <input type="radio" id="evidence-event" name="evidence-kind" value="event" />
+  <input type="radio" id="evidence-future" name="evidence-kind" value="future" />
+  <div class="evidence-modes">
+    <label for="evidence-dialogue">Dialogue</label>
+    <label for="evidence-event">World event</label>
+    <label for="evidence-future">Projection</label>
+  </div>
+  <div class="evidence-panels">
+    <div class="evidence-panel" data-evidence="dialogue">
+      <p class="record-label">A CHARACTER'S REPLY</p>
+      <p class="record-content">&ldquo;I will tell them before sunset.&rdquo;</p>
+      <dl>
+        <div><dt>What this records</dt><dd>The character generated a promise to pass on the message.</dd></div>
+        <div class="claim-boundary"><dt>What it cannot establish</dt><dd>That the recipient received the message, or that any shared state changed.</dd></div>
+      </dl>
+    </div>
+    <div class="evidence-panel" data-evidence="event">
+      <p class="record-label">A COMMITTED WORLD EVENT</p>
+      <p class="record-content">Message delivered; the recipient's information state was updated.</p>
+      <dl>
+        <div><dt>What this records</dt><dd>A state transition inside the simulation, assuming the record accurately reflects execution.</dd></div>
+        <div class="claim-boundary"><dt>What it cannot establish</dt><dd>That a real person would receive, interpret, or act on the message in the same way.</dd></div>
+      </dl>
+    </div>
+    <div class="evidence-panel" data-evidence="future">
+      <p class="record-label">A GENERATED POSSIBLE FUTURE</p>
+      <p class="record-content">&ldquo;The message could lead the two characters to meet again.&rdquo;</p>
+      <dl>
+        <div><dt>What this records</dt><dd>A generated account of a possible consequence.</dd></div>
+        <div class="claim-boundary"><dt>What it cannot establish</dt><dd>That the meeting happened, or that this narrative is a calibrated forecast.</dd></div>
+      </dl>
+    </div>
+  </div>
+</fieldset>
 
 These distinctions make a practical difference. A record of committed events can reveal a broken handoff that a plausible final narrative would conceal. A projected future can still be valuable as an imaginative experience, provided it is not confused with an observed consequence.
 
@@ -43,6 +87,8 @@ The study of agents grounded in self-reports from 1,052 people offers a relevant
 
 ## The question I want to keep open
 
-I do not want to choose between building an engaging world and doing rigorous research. I want the system to make it possible to ask a more precise question: **which mechanism changed, what evidence records that change, and how far does the resulting claim travel?**
+I do not want to choose between building an engaging world and doing rigorous research. I want the system to make it possible to ask a more precise question:
+
+> Which mechanism changed, what evidence records that change, and how far does the resulting claim travel?
 
 That is a more demanding objective than producing a compelling demo, and a more useful starting point for computational social science.

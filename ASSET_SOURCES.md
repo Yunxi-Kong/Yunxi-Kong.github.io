@@ -11,3 +11,8 @@ The October 2026 update uses research artifacts, not illustrative placeholders.
 The original portrait, institutional marks, and earlier project figures were retained.
 Institutional marks identify educational affiliations, not sponsorship or endorsement.
 New raster files were resized and exported without source-file metadata.
+
+The Writing section reuses these three approved artifacts, with captions distinguishing
+system interfaces and architecture from empirical evidence. The message-delivery
+example is an original HTML/CSS conceptual illustration. Its fictional statements
+and events are explicitly labeled and are not presented as Motiverse execution logs.

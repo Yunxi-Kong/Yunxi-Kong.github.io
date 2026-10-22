@@ -23,7 +23,12 @@ In an agent workflow, a successful process exit is not necessarily a usable scie
 
 My work on [CyberNeuro](/projects/cyberneuro/) and interactive learning systems brings these distinctions into everyday development. Did the tool produce the expected artifact? Can a person inspect it? Does it address the intended task? These are different checks, even when the interface presents them together.
 
-Reliable engineering is a prerequisite for interpreting an evaluation. It does not replace the evaluation.
+<figure class="article-figure">
+  <img src="/assets/project-thumbnails/cyberneuro.webp" width="1529" height="759" alt="CyberNeuro team architecture connecting task orchestration, agents, analysis tools, and research workflows" loading="lazy" decoding="async" />
+  <figcaption><strong>From the paper: CyberNeuro's system architecture.</strong> Figure 1 from our public preprint, showing the team-level system. An architecture describes how work is organized; it does not by itself establish scientific validity or user benefit.<span class="figure-links"><a href="/assets/project-thumbnails/cyberneuro.webp">Full-size figure</a><a href="https://arxiv.org/html/2607.28841v1">Source preprint</a><a href="/projects/cyberneuro/">My contributions</a></span></figcaption>
+</figure>
+
+> Reliable engineering is a prerequisite for interpreting an evaluation. It does not replace the evaluation.
 
 ## Define the comparison
 
@@ -45,10 +50,12 @@ These are the questions behind my ongoing [LLM evaluation reliability project](/
 
 For a future human-AI study, I want to make five things explicit before interpreting the results:
 
-- The observation: what was recorded, including failures and missing data.
-- The construct: what that observation is meant to represent.
-- The comparison: what alternative condition makes the result informative.
-- The assumptions: what must hold for the interpretation to be reasonable.
-- The boundary: which people, tasks, and settings the claim actually covers.
+<ol class="evidence-contract">
+  <li><div><strong>The observation</strong>What was recorded, including failures and missing data.</div></li>
+  <li><div><strong>The construct</strong>What that observation is meant to represent.</div></li>
+  <li><div><strong>The comparison</strong>What alternative condition makes the result informative.</div></li>
+  <li><div><strong>The assumptions</strong>What must hold for the interpretation to be reasonable.</div></li>
+  <li><div><strong>The boundary</strong>Which people, tasks, and settings the claim actually covers.</div></li>
+</ol>
 
 This discipline connects system-building to the computational social science I want to pursue. The objective is not to collect the largest possible trace. It is to produce evidence that can survive a clear question about what it means.

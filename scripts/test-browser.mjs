@@ -19,7 +19,7 @@ async function routes(dir = "dist") {
 const browser = await chromium.launch({ headless: true, channel });
 const report = [];
 try {
-  for (const width of [1440, 768, 390, 320]) {
+  for (const width of [320, 390, 768, 1440]) {
     const context = await browser.newContext({ viewport: { width, height: 960 }, reducedMotion: "reduce" });
     const page = await context.newPage();
     const errors = [];
@@ -44,7 +44,7 @@ try {
         const accessibility = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"]).analyze();
         assert.deepEqual(accessibility.violations.map(v => ({ id: v.id, targets: v.nodes.map(n => n.target) })), [], `${route}: accessibility`);
       }
-      if ([1440, 390].includes(width) && ["/", "/projects/asnr-brain-atlas/", "/projects/motiverse/", "/writing/human-capability/", "/publications/"].includes(route)) {
+      if ([1440, 390].includes(width) && ["/", "/projects/asnr-brain-atlas/", "/projects/motiverse/", "/writing/", "/writing/human-capability/", "/writing/simulation-and-evidence/", "/writing/interaction-logs/", "/publications/"].includes(route)) {
         await page.screenshot({ path: `test-results/${width}-${route.replaceAll("/", "_")}.png`, fullPage: true });
         if (route === "/") await page.screenshot({ path: `test-results/${width}-home-viewport.png` });
       }
@@ -61,10 +61,61 @@ try {
     await page.locator("summary").first().click();
     assert.equal(await page.locator("details").first().getAttribute("open"), "");
     assert.ok((await page.locator("pre").first().innerText()).includes("10.1145/3785022.3785058"));
+    await page.goto(base + "/writing/simulation-and-evidence/");
+    if (width <= 950) {
+      const contents = page.locator(".note-mobile-toc");
+      assert.equal(await contents.getAttribute("open"), null);
+      await contents.locator("summary").focus();
+      await page.keyboard.press("Enter");
+      assert.equal(await contents.getAttribute("open"), "");
+      await contents.getByRole("link").first().click();
+      assert.ok(page.url().endsWith("#words-events-and-possible-futures"));
+      await contents.locator("summary").click();
+      await page.goto(base + "/writing/simulation-and-evidence/");
+    }
+    const example = page.locator(".evidence-example");
+    const originalHeight = (await example.boundingBox()).height;
+    if ([1440, 390].includes(width)) {
+      await page.screenshot({ path: `test-results/${width}-note-viewport.png` });
+      await example.screenshot({ path: `test-results/${width}-evidence-example.png` });
+    }
+    for (const [id, kind] of [["evidence-event", "event"], ["evidence-future", "future"], ["evidence-dialogue", "dialogue"]]) {
+      await page.locator(`label[for="${id}"]`).click();
+      assert.ok(await page.locator(`#${id}`).isChecked());
+      for (const candidate of ["dialogue", "event", "future"]) {
+        assert.equal(await page.locator(`[data-evidence="${candidate}"]`).isVisible(), candidate === kind);
+      }
+      const selectedHeight = (await example.boundingBox()).height;
+      assert.ok(Math.abs(selectedHeight - originalHeight) < 1, `${width}px ${kind}: evidence height changed from ${originalHeight} to ${selectedHeight}`);
+      if (width === 1440) {
+        const accessibility = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"]).analyze();
+        assert.deepEqual(accessibility.violations.map(v => v.id), [], `${kind}: accessibility`);
+      }
+    }
+    await page.getByRole("radio", { name: "Dialogue", exact: true }).focus();
+    await page.keyboard.press("ArrowRight");
+    assert.ok(await page.getByRole("radio", { name: "World event", exact: true }).isChecked());
+    assert.equal(await page.locator('label[for="evidence-event"]').evaluate(e => getComputedStyle(e).outlineStyle), "solid");
+    await page.keyboard.press("ArrowRight");
+    assert.ok(await page.getByRole("radio", { name: "Projection", exact: true }).isChecked());
+    await page.locator(".figure-links a").first().click();
+    assert.ok(page.url().endsWith("/assets/project-thumbnails/motiverse.webp"));
     assert.deepEqual(errors, []);
     await context.close();
-    console.log(`Passed ${width}px: all routes, images, overflow, keyboard navigation, and citations.`);
+    console.log(`Passed ${width}px: all routes, images, overflow, keyboard navigation, citations, and evidence controls.`);
   }
+  const noScript = await browser.newContext({ javaScriptEnabled: false, reducedMotion: "reduce" });
+  const article = await noScript.newPage();
+  await article.goto(base + "/writing/simulation-and-evidence/");
+  await article.locator('label[for="evidence-future"]').click();
+  assert.ok(await article.locator('[data-evidence="future"]').isVisible());
+  assert.equal(await article.locator('[data-evidence="dialogue"]').isVisible(), false);
+  await article.emulateMedia({ media: "print" });
+  for (const kind of ["dialogue", "event", "future"]) {
+    assert.ok(await article.locator(`[data-evidence="${kind}"]`).isVisible(), `${kind}: print must include every explanation`);
+  }
+  await noScript.close();
+  console.log("Passed no-JavaScript interaction and complete print explanations.");
   await writeFile("test-results/browser-report.json", JSON.stringify(report, null, 2));
 } finally {
   await browser.close();
