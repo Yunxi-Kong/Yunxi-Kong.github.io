@@ -3,9 +3,10 @@ import type { Publication } from "../data/publications";
 
 type Props = {
   publication: Publication;
+  showCitation?: boolean;
 };
 
-const { publication } = Astro.props;
+const { publication, showCitation = false } = Astro.props;
 ---
 
 <article class="publication-item">
@@ -13,14 +14,15 @@ const { publication } = Astro.props;
   <div>
     <p class="publication-type">{publication.type}</p>
     <h3>{publication.title}</h3>
-    <p class="authors">{publication.authors}</p>
+    <p class="authors">{publication.authors.split("Yunxi Kong").map((part, index) => <>{index > 0 && <strong>Yunxi Kong</strong>}{part}</>)}</p>
     <p>{publication.status}</p>
     {publication.links && (
       <div class="inline-links">
         {publication.links.map((link) => (
-          <a href={link.href} target="_blank" rel="noreferrer">{link.label}</a>
+          <a href={link.href}>{link.label}</a>
         ))}
       </div>
     )}
+    {showCitation && <details class="citation"><summary>BibTeX</summary><pre><code>{publication.bibtex}</code></pre></details>}
   </div>
 </article>

@@ -1,3 +1,5 @@
+import { recentProjects } from "./recent-projects";
+
 export type Project = {
   slug: string;
   title: string;
@@ -5,7 +7,12 @@ export type Project = {
   category: string;
   role?: string;
   featured?: boolean;
-  thumbnail: string;
+  thumbnail?: string;
+  caption?: string;
+  status?: string;
+  question?: string;
+  limitations?: string;
+  decisions?: { title: string; text: string }[];
   summary: string;
   context: string;
   contributions: string[];
@@ -15,13 +22,16 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  ...recentProjects,
   {
     slug: "histy-ai-history-annotation",
     title: "Histy: AI History Annotation System",
     year: "2025-Present",
+    status: "Active development",
     category: "Human-centered AI / Learning Systems",
-    featured: true,
+    featured: false,
     thumbnail: "/assets/project-thumbnails/histy.jpg",
+    caption: "An earlier Histy reading and annotation interface. The Vercel link opens the actively updated development preview.",
     summary:
       "An interactive history reading and annotation environment designed to make student thinking more visible during reading.",
     context:
@@ -37,18 +47,16 @@ export const projects: Project[] = [
       "Annotation interface design",
       "Learning sciences"
     ],
-    outcomes: [
-      "Live deployed demo",
-      "Basis for future HCI and AI-in-education research"
-    ],
+    outcomes: ["Actively updated Vercel development preview", "Earlier publicly accessible demo"],
+    limitations: "The current Vercel development preview requires Vercel sign-in. An earlier public demo remains available below. The prototype is a research environment; learning outcomes have not been established through a controlled study.",
     links: [
       {
-        label: "Live demo",
-        href: "https://chronicle-history-annotation-940148600018.us-west1.run.app"
+        label: "Development preview (Vercel sign-in)",
+        href: "https://ai-history-project-annotation-pj31q5h12-yks-projects-6bdf723c.vercel.app/"
       },
       {
-        label: "GitHub",
-        href: "https://github.com/Yunxi-Kong/AI-History-Project-Annotation"
+        label: "Earlier public demo",
+        href: "https://chronicle-history-annotation-940148600018.us-west1.run.app"
       }
     ]
   },
@@ -57,7 +65,7 @@ export const projects: Project[] = [
     title: "AI History Storyboard Agent",
     year: "2025",
     category: "LLM Agents / Multimodal Learning",
-    featured: true,
+    featured: false,
     thumbnail: "/assets/project-thumbnails/storyboard-agent.jpg",
     summary:
       "A multi-agent system that transforms a history passage into a comic-style sequence of scenes.",
@@ -85,10 +93,10 @@ export const projects: Project[] = [
   {
     slug: "learning-analytics-value-chain",
     title: "Learning Analytics Value-Chain Classification",
-    year: "2025-Present",
+    year: "2025-2026",
     category: "Learning Analytics / NLP",
     role: "Research Assistant to Prof. Charles Lang",
-    featured: true,
+    featured: false,
     thumbnail: "/assets/project-thumbnails/value-chain.jpg",
     summary:
       "A computational classification project mapping 3,720 learning analytics publications across stages of the learning analytics value chain.",
@@ -106,13 +114,13 @@ export const projects: Project[] = [
       "Human-in-the-loop evaluation"
     ],
     outcomes: [
-      "Accepted paper at LAK 2026",
-      "Approximately 90% validation accuracy on a human-coded sample reported in CV materials"
+      "Published in the LAK 2026 proceedings, pp. 793-801",
+      "Open-access paper with operational definitions and a research-landscape analysis"
     ],
     links: [
       {
-        label: "LAK 2026",
-        href: "https://www.solaresearch.org/events/lak/lak26/"
+        label: "Paper",
+        href: "https://doi.org/10.1145/3785022.3785058"
       }
     ]
   },
@@ -137,15 +145,11 @@ export const projects: Project[] = [
       "Interface prototyping",
       "AI question generation"
     ],
-    outcomes: ["Live demo", "Duke AI Summit Showcase poster"],
+    outcomes: ["Interactive prototype", "Duke AI Summit Showcase poster"],
     links: [
       {
         label: "Duke AI Summit Showcase",
         href: "https://ai.duke.edu/triangle-ai-summit/showcase/"
-      },
-      {
-        label: "Prototype",
-        href: "http://35.202.48.153:11636/static/index.html#/index"
       }
     ]
   },
@@ -171,8 +175,8 @@ export const projects: Project[] = [
       "Balance diagnostics"
     ],
     outcomes: [
-      "Manuscript under review for ICLS 2026 in CV materials",
-      "Heterogeneous gains reported for lower-proficiency students"
+      "Graduate research manuscript",
+      "Observational analysis with balance diagnostics; interpretation depends on causal-identification assumptions"
     ]
   },
   {
@@ -197,7 +201,7 @@ export const projects: Project[] = [
       "GeoPandas visualization"
     ],
     outcomes: [
-      "Manuscript under review for ICLS 2026 in CV materials",
+      "Graduate research manuscript",
       "Policy-oriented visual analysis of regional educational opportunity"
     ]
   },

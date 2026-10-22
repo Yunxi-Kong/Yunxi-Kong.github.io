@@ -1,69 +1,31 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { projects } from "../../data/projects";
-
 export function getStaticPaths() {
-  return projects.map((project) => ({
-    params: { slug: project.slug },
-    props: { project }
-  }));
+  return projects.map(project=>({params:{slug:project.slug},props:{project}}));
 }
-
 const { project } = Astro.props;
 ---
-
-<BaseLayout
-  title={project.title}
-  description={project.summary}
->
+<BaseLayout title={project.title} description={project.summary} image={project.thumbnail}>
   <article class="project-detail">
-    <header class="detail-hero detail-hero-split">
-      <div>
-        <a class="back-link" href="/projects/">Back to projects</a>
-        <p class="page-label">{project.category}</p>
-        <h1>{project.title}</h1>
-        <p>{project.summary}</p>
-        <div class="detail-meta">
-          <span>{project.year}</span>
-          {project.role && <span>{project.role}</span>}
-        </div>
-        {project.links && (
-          <div class="hero-actions">
-            {project.links.map((link) => (
-              <a class="button secondary" href={link.href} target="_blank" rel="noreferrer">{link.label}</a>
-            ))}
-          </div>
-        )}
-      </div>
-      <figure class="detail-visual">
-        <img src={project.thumbnail} alt={`Research visual for ${project.title}`} />
-      </figure>
+    <header class="detail-hero">
+      <a class="back-link" href="/projects/">All projects</a>
+      <p class="page-label">{project.category}</p><h1>{project.title}</h1>
+      <p class="lede">{project.summary}</p>
+      <div class="detail-meta"><span>{project.year}</span>{project.status && <span>{project.status}</span>}</div>
+      {project.role && <p><strong>My role:</strong> {project.role}</p>}
+      {project.links && <div class="inline-links">{project.links.map(link=><a href={link.href}>{link.label}</a>)}</div>}
     </header>
-
+    {project.thumbnail && <figure class="detail-visual"><a href={project.thumbnail} aria-label={`Open full-size figure for ${project.title}`}><img src={project.thumbnail} alt={project.caption || `Project figure: ${project.title}`} width="1600" height="900" /></a>{project.caption && <figcaption>{project.caption}</figcaption>}</figure>}
     <div class="detail-layout">
-      <aside class="detail-sidebar">
-        <h2>Methods</h2>
-        <div class="tag-row vertical-tags">
-          {project.methods.map((method) => <span>{method}</span>)}
-        </div>
-      </aside>
+      <aside class="detail-sidebar"><h2>Methods</h2><ul>{project.methods.map(method=><li>{method}</li>)}</ul></aside>
       <div class="detail-content">
-        <section>
-          <h2>Context</h2>
-          <p>{project.context}</p>
-        </section>
-        <section>
-          <h2>Contributions</h2>
-          <ul>
-            {project.contributions.map((item) => <li>{item}</li>)}
-          </ul>
-        </section>
-        <section>
-          <h2>Outputs and status</h2>
-          <ul>
-            {project.outcomes.map((item) => <li>{item}</li>)}
-          </ul>
-        </section>
+        {project.question && <section><h2>Research Question</h2><p class="research-question">{project.question}</p></section>}
+        <section><h2>Context</h2><p>{project.context}</p></section>
+        <section><h2>My Contributions</h2><ul>{project.contributions.map(item=><li>{item}</li>)}</ul></section>
+        {project.decisions && <section><h2>Design Decisions</h2>{project.decisions.map(item=><div class="design-decision"><h3>{item.title}</h3><p>{item.text}</p></div>)}</section>}
+        <section><h2>Outputs &amp; Status</h2><ul>{project.outcomes.map(item=><li>{item}</li>)}</ul></section>
+        {project.limitations && <section class="scope-note"><h2>Scope &amp; Next Questions</h2><p>{project.limitations}</p></section>}
       </div>
     </div>
   </article>

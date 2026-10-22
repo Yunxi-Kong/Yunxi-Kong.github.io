@@ -1,79 +1,20 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { education, profile } from "../data/site";
+import { profile } from "../data/site";
 ---
-
-<BaseLayout
-  title="About"
-  description="About Yunxi Kong."
->
-  <section class="about-hero">
-    <img src={profile.portrait} alt="Portrait of Yunxi Kong" />
-    <div>
-      <p class="page-label">About</p>
-      <h1>About Yunxi Kong</h1>
-      <p>
-        I came to Duke's M.S. in Economics and Computation with training in
-        economics and mathematics and a broad goal: to become a researcher who can
-        move across quantitative social science, computation, and learning. During
-        the program, I have used coursework and research projects to build a more
-        concrete direction around AI-supported learning systems, learning analytics,
-        and human-centered educational technology.
-      </p>
-      <p>
-        My current work combines system building and empirical analysis. I have
-        built AI-assisted history reading and annotation systems, studied adaptive
-        recommendation effects in tutoring data, and contributed to a learning
-        analytics paper accepted at LAK 2026. Outside this academic website, I also
-        maintain broader education technology work through Ingenius Prime.
-      </p>
-      <div class="hero-actions">
-        <a class="button primary" href="/projects/">View Projects</a>
-        <a class="button secondary" href={profile.edtech} target="_blank" rel="noreferrer">Ingenius Prime</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="content-section">
-    <h2>Research profile</h2>
-    <div class="profile-columns">
-      <article>
-        <h3>What I study</h3>
-        <p>
-          I am interested in how AI systems can support learning without hiding
-          the learner's reasoning process. This includes annotation, discussion,
-          feedback, multimodal explanation, and teacher-facing inspection views.
-        </p>
-      </article>
-      <article>
-        <h3>How I work</h3>
-        <p>
-          I tend to pair working prototypes with empirical methods: causal inference,
-          learning analytics, corpus classification, and human-in-the-loop validation.
-        </p>
-      </article>
-      <article>
-        <h3>Where I am going</h3>
-        <p>
-          I am preparing for PhD-level research on AI, learning, and human-machine
-          systems, while keeping a connection to educational equity and real learning
-          settings.
-        </p>
-      </article>
-    </div>
-  </section>
-
-  <section class="content-section">
-    <h2>Education and training</h2>
-    <div class="timeline-list">
-      {education.map((item) => (
-        <article>
-          <time>{item.period}</time>
-          <h3>{item.institution}</h3>
-          <p>{item.degree} / {item.place}</p>
-          <p>{item.note}</p>
-        </article>
-      ))}
-    </div>
-  </section>
+<BaseLayout title="About" description="Yunxi Kong's path from economics and mathematics to interactive AI systems and societal computing.">
+  <header class="page-hero"><p class="page-label">About</p><h1>From economics to interactive AI systems</h1><p class="lede">I am Yunxi Kong, a researcher and builder interested in how computational systems change human possibilities.</p></header>
+  <article class="prose standalone-prose">
+    <h2>Quantitative foundations</h2>
+    <p>At Syracuse University, I studied economics and mathematics. My honors thesis examined China's K-12 Double Reduction Policy, an experience that drew me toward questions about policy, incentives, and unequal access to opportunity. I graduated cum laude in 2024.</p>
+    <h2>Learning through building</h2>
+    <p>During my M.S. in Economics and Computation at Duke, I began connecting those questions to working software and empirical analysis. I built history-reading and annotation environments, explored intelligent-tutoring data, and contributed to <em>The Learning Analytics Value Chain</em>, published at LAK 2026. I also participated in Carnegie Mellon University's LearnLab Summer Program in 2025.</p>
+    <h2>Systems in real research settings</h2>
+    <p>At UNC ACMLab, I work with Prof. Guorong Wu on interactive systems. Recent work includes developing the ASNR Interactive Brain Atlas with clinician feedback and contributing visualization and tool integrations to CyberNeuro. These projects have made content integrity, expert review, and inspectable workflows concrete design problems for me.</p>
+    <p>Alongside this work, Motiverse explores how character dialogue can connect to persistent consequences in an interactive literary world. My model-evaluation work asks how the measurements used to assess AI can themselves introduce selection effects.</p>
+    <h2>Where I am heading</h2>
+    <p>I am preparing for doctoral research in societal computing and computational social science, with human-AI interaction as an important bridge. I want to develop systems that are useful to people and research methods that make their effects understandable.</p>
+    <p>Outside these academic projects, my education technology work in China is collected at <a href={profile.edtech}>Ingenius Prime</a>.</p>
+    <p>Contact: <span class="email-text">{profile.email}</span></p>
+  </article>
 </BaseLayout>

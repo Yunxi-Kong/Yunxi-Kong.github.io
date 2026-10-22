@@ -1,150 +1,69 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import SectionHeader from "../components/SectionHeader.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import PublicationItem from "../components/PublicationItem.astro";
 import { featuredProjects } from "../data/projects";
 import { publications } from "../data/publications";
-import { education, news, profile, profileHighlights, researchInterests } from "../data/site";
-
-const selectedPublications = publications.slice(0, 3);
+import { education, news, profile, researchInterests } from "../data/site";
+import { writing } from "../data/writing";
 ---
-
-<BaseLayout
-  title="Yunxi Kong"
-  description="Academic website of Yunxi Kong, a Duke M.S. student in Economics and Computation working across AI, learning systems, HCI, learning analytics, and computational social science."
->
+<BaseLayout title="Yunxi Kong" description="Yunxi Kong is a research assistant at UNC ACMLab exploring societal computing, human-AI interaction, and computational social science.">
   <section class="hero-section">
-    <div class="hero-copy">
-      <p class="page-label">About Me</p>
-      <h1>Yunxi Kong</h1>
-      <p class="hero-role">M.S. in Economics and Computation, Duke University</p>
-      <p class="hero-text">
-        I am a master's student in Economics and Computation at Duke University, preparing
-        to pursue doctoral research at the intersection of AI, learning sciences, and
-        human-centered computing. My academic work asks how AI systems can support learning,
-        make student reasoning and interaction more visible, and help researchers evaluate
-        educational technologies with rigorous evidence.
-      </p>
-      <p class="hero-text">
-        My recent projects combine system-building with empirical analysis: AI-assisted
-        history reading and annotation environments, multimodal learning prototypes, causal
-        analysis of intelligent tutoring data, and large-scale classification of learning
-        analytics research.
-      </p>
-      <div class="interest-list" aria-label="Research interests">
-        {researchInterests.map((interest) => <span>{interest}</span>)}
-      </div>
-      <div class="hero-actions">
-        <a class="button primary" href="/projects/">View Projects</a>
-        <a class="button secondary" href={profile.cv}>Download CV</a>
-        <a class="button text" href="#contact">Contact</a>
-      </div>
-      <div class="profile-highlight-grid" aria-label="Academic highlights">
-        {profileHighlights.map((item) => (
-          <article>
-            <strong>{item.value}</strong>
-            <span>{item.label}</span>
-            <p>{item.text}</p>
-          </article>
-        ))}
-      </div>
-    </div>
-    <aside class="portrait-panel" aria-label="Portrait and contact summary">
-      <img src={profile.portrait} alt="Portrait of Yunxi Kong" />
-      <div class="portrait-card">
-        <p>Duke University / Durham, NC</p>
+    <aside class="portrait-panel" aria-label="Portrait and contact">
+      <img src={profile.portrait} width="1280" height="1920" fetchpriority="high" alt="Yunxi Kong at Duke University" />
+      <div class="portrait-contact">
+        <p class="profile-name">Yunxi Kong</p>
+        <p>{profile.role}<br />UNC Chapel Hill</p>
         <p class="email-text">{profile.email}</p>
-        <div class="portrait-links">
-          <a href={profile.github} target="_blank" rel="noreferrer">GitHub</a>
-          <a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
-        </div>
+        <div class="inline-links"><a href={profile.github}>GitHub</a><a href={profile.linkedin}>LinkedIn</a><a href="/cv/">CV</a></div>
       </div>
     </aside>
+    <div class="hero-copy">
+      <h1>About Me</h1>
+      <p>I am a Research Assistant at the <a href={profile.lab}>Advanced Computational Medicine Laboratory</a> at the University of North Carolina at Chapel Hill, working with <a href="https://www.acmlab.org/">Prof. Guorong (Rudy) Wu</a>. I completed my M.S. in Economics and Computation at Duke University in May 2026, following undergraduate study in economics and mathematics at Syracuse University.</p>
+      <p>My interests lie in <strong>societal computing, computational social science, and human-AI interaction</strong>. I want to understand how AI changes what people can do, how they make decisions, and how information moves through social environments. I approach these questions by building interactive systems and examining the evidence they produce.</p>
+      <p>Recently, I have been developing the <a href="/projects/asnr-brain-atlas/">ASNR Interactive Brain Atlas</a> with clinician feedback, contributing visualization and tool integrations to <a href="/projects/cyberneuro/">CyberNeuro</a>, and exploring traceable multi-agent interaction in <a href="/projects/motiverse/">Motiverse</a>. Education and scientific work provide concrete settings for these broader questions.</p>
+      <p>I am preparing for doctoral research and welcome conversations about human-AI systems, social simulation, and rigorous evaluation.</p>
+      <p class="interest-line">{researchInterests.join(" · ")}</p>
+      <div class="inline-links hero-actions"><a href="/research/">Research questions</a><a href="/projects/">Projects</a><a href="/writing/">Writing</a></div>
+    </div>
   </section>
 
-  <section class="home-overview" aria-label="Education and news">
-    <div class="education-panel">
-      <SectionHeader
-        kicker="Education"
-        title="Education and training"
-        text="A concise academic timeline for visitors who want to understand my background quickly."
-      />
+  <section class="home-overview" aria-label="News and education">
+    <div>
+      <h2>News</h2>
+      <div class="news-list">
+        {news.map((item) => <article><time datetime={item.date}>{item.date}</time><p><a href={item.href}>{item.text}</a></p></article>)}
+      </div>
+    </div>
+    <div>
+      <h2>Education &amp; Training</h2>
       <div class="education-list">
         {education.map((item) => (
           <article class="education-item">
-            <div class="school-logo">
-              <img src={item.logo} alt={item.logoAlt} />
-            </div>
-            <div>
-              <div class="education-heading">
-                <h3>{item.institution}</h3>
-                <time>{item.period}</time>
-              </div>
-              <p class="degree">{item.degree}</p>
-              <p>{item.place}</p>
-              <p>{item.note}</p>
-            </div>
+            <div class="school-logo"><img src={item.logo} alt={item.logoAlt} width="76" height="52" loading="lazy" /></div>
+            <div><h3>{item.institution}</h3><p>{item.degree}</p><time>{item.period}</time></div>
           </article>
         ))}
       </div>
     </div>
-    <aside class="news-panel early-news">
-      <h2>News</h2>
-      <div class="news-list">
-        {news.map((item) => (
-          <article>
-            <time>{item.date}</time>
-            <p>{item.text}</p>
-            <span>{item.detail}</span>
-          </article>
-        ))}
-      </div>
-    </aside>
   </section>
 
-  <section class="content-section">
-    <SectionHeader
-      kicker="Selected Work"
-      title="Selected projects"
-      text="The project pages collect system-building work, empirical analysis, and course research from my master's training."
-    />
-    <div class="selected-work-list">
-      {featuredProjects.map((project) => <ProjectCard project={project} />)}
-    </div>
-    <div class="section-link">
-      <a href="/projects/">Browse all projects</a>
-    </div>
+  <section class="content-section" aria-labelledby="selected-projects">
+    <div class="section-heading"><h2 id="selected-projects">Selected Projects</h2><a href="/projects/">All projects</a></div>
+    <div class="selected-work-list">{featuredProjects.map((project) => <ProjectCard project={project} compact />)}</div>
   </section>
-
-  <section class="content-section">
-    <SectionHeader
-      kicker="Publications"
-      title="Publications, manuscripts, and selected research"
-      text="This section separates accepted work from manuscripts and selected course research so the record stays clear."
-    />
-    <div class="publication-list short-list">
-      {selectedPublications.map((publication) => <PublicationItem publication={publication} />)}
-    </div>
-    <div class="section-link">
-      <a href="/publications/">View publication list</a>
-    </div>
+  <section class="content-section" aria-labelledby="publications">
+    <div class="section-heading"><h2 id="publications">Publications &amp; Preprints</h2><a href="/publications/">Full references</a></div>
+    <div class="publication-list">{publications.map((publication) => <PublicationItem publication={publication} />)}</div>
   </section>
-
-  <section class="content-section bridge-section" id="contact">
-    <div>
-      <p class="eyebrow">More Context</p>
-      <h2>Additional academic and education technology materials</h2>
-      <p>
-        This website keeps the front page focused on academic materials. For my broader
-        education technology work in China, visit Ingenius Prime. For project details,
-        papers, code, and CV materials, use the navigation links above.
-      </p>
-      <p class="contact-line">Email: <span>{profile.email}</span></p>
-    </div>
-    <div class="bridge-actions">
-      <a class="button primary" href={profile.edtech} target="_blank" rel="noreferrer">Visit Ingenius Prime</a>
-      <a class="button secondary" href="/research/">Research interests</a>
-    </div>
+  <section class="content-section" aria-labelledby="writing">
+    <div class="section-heading"><h2 id="writing">Recent Writing</h2><a href="/writing/">All notes</a></div>
+    <div class="writing-list">{writing.map((post) => <article><div class="card-meta">{post.topic}</div><h3><a href={post.url}>{post.title}</a></h3><p>{post.description}</p></article>)}</div>
+  </section>
+  <section class="content-section contact-section" id="contact">
+    <h2>Elsewhere</h2>
+    <p>For my education technology work in China, visit <a href={profile.edtech}>Ingenius Prime</a>. More about my path is on the <a href="/about/">About page</a>.</p>
+    <p class="contact-line">Contact: <span class="email-text">{profile.email}</span></p>
   </section>
 </BaseLayout>

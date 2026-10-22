@@ -6,3 +6,7 @@ dist/
 Thumbs.db
 npm-debug.log*
 .astro-dev*.log
+.local-notes/
+test-results/
+.env
+.env.*

@@ -1,0 +1,9 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { writing } from "../../data/writing";
+import { formatDate } from "../../data/site";
+---
+<BaseLayout title="Writing" description="Research notes by Yunxi Kong on human capability, agent simulation, and evidence in human-AI systems.">
+  <header class="page-hero"><p class="page-label">Writing</p><h1>Research Notes</h1><p class="lede">Questions at the intersection of building AI systems and understanding their consequences.</p><p>These notes develop my working perspective. They are essays and open questions, not reports of completed experiments.</p></header>
+  <section class="content-section"><div class="writing-list">{writing.map(post=><article><div class="card-meta">{post.topic}</div><h2><a href={post.url}>{post.title}</a></h2><p>{post.description}</p><p class="reading-meta"><time datetime={post.date}>{formatDate(post.date)}</time><span>{post.minutes} min read</span></p></article>)}</div></section>
+</BaseLayout>

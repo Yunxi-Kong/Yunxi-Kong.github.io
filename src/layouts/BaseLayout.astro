@@ -1,29 +1,47 @@
 ---
 import "../styles/global.css";
-import { profile } from "../data/site";
+import { profile, updated, formatDate } from "../data/site";
 
 type Props = {
   title?: string;
   description?: string;
+  image?: string;
+  article?: boolean;
+  publishedDate?: string;
 };
 
 const {
   title = "Yunxi Kong",
-  description = "Academic website of Yunxi Kong, featuring research interests, projects, publications, and CV."
+  description = "Academic website of Yunxi Kong, featuring research interests, projects, publications, and writing.",
+  image = profile.portrait,
+  article = false,
+  publishedDate
 } = Astro.props;
 
 const pageTitle = title === "Yunxi Kong" ? title : `${title} | Yunxi Kong`;
 const siteUrl = "https://yunxi-kong.github.io";
-const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
-const ogImage = new URL(profile.portrait, siteUrl).toString();
+const isNotFound = Astro.url.pathname === "/404/";
+const canonicalUrl = new URL(isNotFound ? "/404.html" : Astro.url.pathname, siteUrl).toString();
+const ogImage = new URL(image, siteUrl).toString();
 const navItems = [
   { href: "/", label: "Home" },
   { href: "/research/", label: "Research" },
   { href: "/projects/", label: "Projects" },
   { href: "/publications/", label: "Publications" },
+  { href: "/writing/", label: "Writing" },
   { href: "/cv/", label: "CV" },
   { href: "/about/", label: "About" }
 ];
+const schema = article ? {
+  "@context": "https://schema.org", "@type": "BlogPosting",
+  headline: title, description, url: canonicalUrl, datePublished: publishedDate,
+  author: { "@type": "Person", name: profile.name, url: siteUrl }
+} : {
+  "@context": "https://schema.org", "@type": "Person",
+  name: profile.name, url: siteUrl, image: new URL(profile.portrait, siteUrl).toString(),
+  jobTitle: "Research Assistant", affiliation: { "@type": "Organization", name: profile.affiliation },
+  sameAs: [profile.github, profile.linkedin, profile.lab]
+};
 ---
 
 <!doctype html>
@@ -32,11 +50,13 @@ const navItems = [
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#f5f7f9" />
+    {isNotFound && <meta name="robots" content="noindex" />}
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <link rel="canonical" href={canonicalUrl} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={article ? "article" : "website"} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={ogImage} />
     <meta name="twitter:card" content="summary_large_image" />
@@ -44,29 +64,31 @@ const navItems = [
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
     <link rel="icon" href="/favicon.svg" />
+    <script type="application/ld+json" set:html={JSON.stringify(schema).replace(/</g, "\\u003c")} />
     <title>{pageTitle}</title>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
       <nav class="nav-shell" aria-label="Primary navigation">
-        <a class="brand" href="/" aria-label="Yunxi Kong home">
-          <span class="brand-mark">YK</span>
+        <a class="brand" href="/">
+          <span class="brand-mark" aria-hidden="true">YK</span>
           <span>Yunxi Kong</span>
         </a>
         <div class="nav-links">
-          {navItems.map((item) => <a href={item.href}>{item.label}</a>)}
+          {navItems.map((item) => <a href={item.href} aria-current={(item.href === "/" ? Astro.url.pathname === "/" : Astro.url.pathname.startsWith(item.href)) ? "page" : undefined}>{item.label}</a>)}
         </div>
       </nav>
     </header>
-    <main id="main">
+    <main id="main" tabindex="-1">
       <slot />
     </main>
     <footer class="site-footer">
       <div>
         <strong>Yunxi Kong</strong>
-        <p>Duke University / Economics and Computation / AI, learning, and human-centered systems</p>
+        <p>Research Assistant, ACMLab · UNC Chapel Hill</p>
         <p class="footer-email">{profile.email}</p>
+        <p class="updated">Updated <time datetime={updated}>{formatDate(updated)}</time></p>
       </div>
       <div class="footer-links">
         <a href={profile.github}>GitHub</a>

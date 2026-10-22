@@ -1,95 +1,17 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { education, methodGroups, profile, profileHighlights } from "../data/site";
+import PublicationItem from "../components/PublicationItem.astro";
+import { education, methodGroups, profile } from "../data/site";
 import { projects } from "../data/projects";
 import { publications } from "../data/publications";
 ---
-
-<BaseLayout
-  title="CV"
-  description="Curriculum vitae and academic background of Yunxi Kong."
->
-  <section class="page-hero compact-hero cv-hero">
-    <div>
-      <p class="page-label">CV</p>
-      <h1>Curriculum Vitae</h1>
-      <p>
-        This page provides a web summary of my current CV. A PDF version is available
-        for applications and reference.
-      </p>
-    </div>
-    <a class="button primary" href={profile.cv}>Download PDF</a>
-  </section>
-
-  <section class="cv-layout">
-    <aside class="cv-sidebar">
-      <h2>Contact</h2>
-      <p class="email-text">{profile.email}</p>
-      <p><a href={profile.github} target="_blank" rel="noreferrer">GitHub</a></p>
-      <p><a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a></p>
-    </aside>
-    <div class="cv-main">
-      <section>
-        <h2>Academic Highlights</h2>
-        <div class="profile-highlight-grid cv-highlight-grid">
-          {profileHighlights.map((item) => (
-            <article>
-              <strong>{item.value}</strong>
-              <span>{item.label}</span>
-              <p>{item.text}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-      <section>
-        <h2>Education</h2>
-        <div class="timeline-list">
-          {education.map((item) => (
-            <article>
-              <time>{item.period}</time>
-              <h3>{item.institution}</h3>
-              <p>{item.degree}</p>
-              <p>{item.note}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-      <section>
-        <h2>Selected Research Experience</h2>
-        <div class="cv-project-list">
-          {projects.slice(0, 6).map((project) => (
-            <article>
-              <h3>{project.title}</h3>
-              <p>{project.summary}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-      <section>
-        <h2>Publications and Manuscripts</h2>
-        <div class="cv-project-list">
-          {publications.slice(0, 3).map((publication) => (
-            <article>
-              <h3>{publication.title}</h3>
-              <p>{publication.authors}. {publication.status}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-      <section>
-        <h2>Technical Skills</h2>
-        <div class="method-grid compact-method-grid">
-          {methodGroups.map((group) => (
-            <article>
-              <h3>{group.title}</h3>
-              <div class="tag-row">
-                {group.items.map((item) => <span>{item}</span>)}
-              </div>
-            </article>
-          ))}
-        </div>
-        <p>Core tools: Python, R, React/TypeScript, JavaScript, Stata, MATLAB, LaTeX, and Git.</p>
-      </section>
-    </div>
-  </section>
+<BaseLayout title="CV" description="Academic background, current research experience, publications, and technical methods of Yunxi Kong. Updated October 22, 2026.">
+  <header class="page-hero"><p class="page-label">CV</p><h1>Yunxi Kong</h1><p class="lede">{profile.role} · UNC Chapel Hill</p><p class="email-text">{profile.email}</p><p class="muted">Web summary updated October 22, 2026.</p><p><a href={profile.cv}>Download earlier CV (March 20, 2026, PDF)</a><br /><span class="muted">The archived PDF predates the updates below.</span></p></header>
+  <div class="cv-main">
+    <section><h2>Research Experience</h2><h3>Research Assistant · Advanced Computational Medicine Laboratory</h3><p>University of North Carolina at Chapel Hill · Prof. Guorong (Rudy) Wu</p><p>Interactive medical learning, scientific visualization, and agentic research workflows. Current projects include the ASNR Interactive Brain Atlas and CyberNeuro.</p><a href={profile.lab}>Laboratory profile</a><h3 class="experience-heading">Learning Analytics Value-Chain Classification</h3><p>Research Assistant to Prof. Charles Lang</p><p>Contributed corpus preparation, prompt-based classification, and human-in-the-loop validation for a study of 3,720 learning analytics publications. Co-author of the resulting LAK 2026 paper.</p></section>
+    <section><h2>Education &amp; Training</h2><div class="timeline-list">{education.map(item=><article><time>{item.period}</time><h3>{item.institution}</h3><p>{item.degree}</p><p class="muted">{item.note}</p></article>)}</div></section>
+    <section><h2>Publications &amp; Preprints</h2><div class="publication-list">{publications.map(publication=><PublicationItem publication={publication} />)}</div></section>
+    <section><h2>Selected Projects</h2><div class="timeline-list">{projects.slice(0,5).map(project=><article><h3><a href={`/projects/${project.slug}/`}>{project.title}</a></h3><p class="muted">{project.role || project.category}</p><p>{project.summary}</p></article>)}</div></section>
+    <section><h2>Methods &amp; Tools</h2><div class="method-grid">{methodGroups.map(group=><article><h3>{group.title}</h3><ul>{group.items.map(item=><li>{item}</li>)}</ul></article>)}</div><p>Python, R, React, TypeScript, JavaScript, Stata, MATLAB, LaTeX, and Git.</p></section>
+  </div>
 </BaseLayout>

@@ -3,58 +3,50 @@ export type Publication = {
   authors: string;
   status: string;
   year: string;
-  type: "Accepted" | "Under Review" | "Selected Research";
-  links?: { label: string; href: string }[];
+  type: "Peer-reviewed" | "Preprint";
+  links: { label: string; href: string }[];
+  bibtex: string;
 };
 
 export const publications: Publication[] = [
   {
     title: "The Learning Analytics Value Chain",
-    authors: "Charles Lang, Yunxi Kong, Geraldine Gray, Jie Gao, and collaborators",
-    status: "Accepted, International Conference on Learning Analytics & Knowledge (LAK 2026)",
-    year: "2026",
-    type: "Accepted",
+    authors: "Charles Lang, Yunxi Kong, Geraldine Gray, and Jie Gao",
+    status: "LAK 2026: 16th International Learning Analytics and Knowledge Conference, pp. 793-801. ACM.",
+    year: "2026", type: "Peer-reviewed",
     links: [
-      {
-        label: "LAK 2026",
-        href: "https://www.solaresearch.org/events/lak/lak26/"
-      }
-    ]
+      { label: "DOI", href: "https://doi.org/10.1145/3785022.3785058" },
+      { label: "Open access", href: "https://arrow.tudublin.ie/itbinfo2ro/12/" },
+      { label: "Project", href: "/projects/learning-analytics-value-chain/" }
+    ],
+    bibtex: `@inproceedings{lang2026valuechain,
+  title = {The Learning Analytics Value Chain},
+  author = {Lang, Charles and Kong, Yunxi and Gray, Geraldine and Gao, Jie},
+  booktitle = {Proceedings of the 16th International Learning Analytics and Knowledge Conference},
+  pages = {793--801},
+  year = {2026},
+  publisher = {ACM},
+  doi = {10.1145/3785022.3785058}
+}`
   },
   {
-    title:
-      "Causal Effects of Adaptive Recommendations on Student Learning Outcomes: Evidence from a Large-Scale Intelligent Tutoring System",
-    authors: "Yunxi Kong",
-    status: "Manuscript under review, International Conference of the Learning Sciences (ICLS 2026)",
-    year: "2026",
-    type: "Under Review"
-  },
-  {
-    title:
-      "Uncovering Structural Patterns of Educational Opportunity: A Computational Analysis of Regional Learning Infrastructures in China",
-    authors: "Yunxi Kong",
-    status: "Manuscript under review, International Conference of the Learning Sciences (ICLS 2026)",
-    year: "2026",
-    type: "Under Review"
-  },
-  {
-    title: "Equity in Gifted Education and ELL Identification",
-    authors: "Yunxi Kong",
-    status: "Policy-oriented research proposal developed in Economics of Education",
-    year: "2025",
-    type: "Selected Research"
-  },
-  {
-    title: "Teaching Strategies in Online Tutoring Dialogue",
-    authors: "Yunxi Kong",
-    status: "Exploratory learning analytics project using online tutoring dialogue data",
-    year: "2025",
-    type: "Selected Research",
+    title: "CyberNeuro: A Privacy-Preserving Agentic Workbench for Cohort-Scale Neuroimage and Clinical Data Analysis",
+    authors: "Ran Ren, Junhong Tong, Yunxi Kong, Yiyao Chen, Yucheng Li, Kunhao Zhou, Shaoqi Wang, Yuxiang Tao, Shuheng Cao, Zhihao Fan, Marissa DiPiero, Tingting Dan, and Guorong Wu",
+    status: "arXiv:2607.28841. Posted July 30, 2026. Not a peer-reviewed publication.",
+    year: "2026", type: "Preprint",
     links: [
-      {
-        label: "LearnLab",
-        href: "https://learnlab.org/"
-      }
-    ]
+      { label: "arXiv", href: "https://arxiv.org/abs/2607.28841" },
+      { label: "PDF", href: "https://arxiv.org/pdf/2607.28841" },
+      { label: "Project", href: "/projects/cyberneuro/" }
+    ],
+    bibtex: `@misc{ren2026cyberneuro,
+  title = {CyberNeuro: A Privacy-Preserving Agentic Workbench for Cohort-Scale Neuroimage and Clinical Data Analysis},
+  author = {Ren, Ran and Tong, Junhong and Kong, Yunxi and Chen, Yiyao and Li, Yucheng and Zhou, Kunhao and Wang, Shaoqi and Tao, Yuxiang and Cao, Shuheng and Fan, Zhihao and DiPiero, Marissa and Dan, Tingting and Wu, Guorong},
+  year = {2026},
+  eprint = {2607.28841},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.MA},
+  url = {https://arxiv.org/abs/2607.28841}
+}`
   }
 ];
