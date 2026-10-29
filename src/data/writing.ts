@@ -1,5 +1,13 @@
 export const writing = [
   {
+    slug: "what-should-a-book-do-in-vr", url: "/writing/what-should-a-book-do-in-vr/",
+    title: "What Should a Book Do in VR?",
+    description: "A turning page is a compelling demonstration. A question that travels between books might be a more interesting design problem.",
+    topic: "Spatial interaction & learning", kind: "Essay", date: "2026-10-29", minutes: 8,
+    question: "After the surprise wears off, what can the reader do that matters?",
+    image: { src: "/assets/essays/book-in-vr.webp", small: "/assets/essays/book-in-vr-720.webp", width: 1440, height: 960, alt: "Conceptual illustration: hands hold a physical book beside its translucent counterpart, with a bookmark linking to another book" }
+  },
+  {
     slug: "the-next-bottleneck", url: "/writing/the-next-bottleneck/",
     title: "The Next Bottleneck",
     description: "When intelligence becomes cheaper, what still stands between a good idea and the ability to act on it?",

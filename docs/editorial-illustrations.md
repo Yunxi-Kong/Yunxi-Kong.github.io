@@ -1,8 +1,28 @@
 # Editorial Illustrations
 
-Created October 22, 2026 with the built-in OpenAI image-generation tool (not the API/CLI). These are original conceptual illustrations, not empirical figures, project screenshots, or depictions of Yunxi Kong's actual workspace. Research-project figures retain their separate provenance in ASSET_SOURCES.md.
+Created October 22 and October 29, 2026 with the built-in OpenAI image-generation tool (not the API/CLI). These are original conceptual illustrations, not empirical figures, project screenshots, or depictions of Yunxi Kong's actual workspace. Research-project figures retain their separate provenance in ASSET_SOURCES.md.
 
 Each selected output was exported as a metadata-free WebP at 1440px and 720px. No creative image edits were made after generation.
+
+## book-in-vr (October 29)
+
+Assets: `public/assets/essays/book-in-vr.webp` and `public/assets/essays/book-in-vr-720.webp`.
+
+Illustrates the proposed connection between physical reading, a virtual counterpart, and a question carried between texts. Not a screenshot of Histy or evidence of a working cross-book bookmark.
+
+### Generation Prompt
+
+Use case: stylized-concept. Asset: original editorial illustration for a thoughtful academic essay titled 'What Should a Book Do in VR?'. Landscape 3:2 bitmap. A close, elevated three-quarter view of a reader's hands holding an open physical book on a white desk. A small coral paper bookmark bridges the actual page and a delicate translucent teal outline of the same open book, slightly offset in space. A second real open book sits nearby; one thin charcoal line connects the bookmark to a particular passage represented by a small printed grey block in that second book. The image argues that a physical gesture can carry a question across books. Clear tactile paper, precise fine ink hatching, architectural cut-paper collage, clean white background, restrained teal, coral and moss-green details. Spacious but vivid, intellectual and human, readable at thumbnail size. No printed words, letters, labels, logos, numbers, robots, brains, glowing effects, gradients, floating holographic dashboard, fantasy scenery or decorative orbs. This is an imagined interaction, not a prototype screenshot, empirical diagram or depiction of an actual user's workspace.
+
+## competing-accounts (October 29)
+
+Assets: `public/assets/essays/competing-accounts.webp` and `public/assets/essays/competing-accounts-720.webp`.
+
+Illustrates fictional, conflicting accounts of a river crossing. The maps do not depict an actual historical event, research data, or measured outcomes.
+
+### Generation Prompt
+
+Use case: stylized-concept. Asset: original conceptual editorial illustration for the middle of an essay on VR, physical books, and interpreting sources. Panoramic 2:1 bitmap. A flat reading table seen from slightly above contains two open books, each with a small, clearly distinct handmade cut-paper map of a river crossing emerging just a little above the page. Both maps depict the same two banks but place the small bridge in different locations. A reader's hand moves one coral paper bookmark between the two pages. Fine black ink lines connect each map back to its own page; neither map is larger or presented as the correct answer. A teal magnifying glass rests next to the books. The composition conveys comparing competing accounts while retaining their sources. Elegant fine-ink drawing and textured cut-paper print, crisp white background, teal water, coral bookmarks and bridges, small moss-green accents, generous margins. No text, no labels, no invented quantitative charts, no robots or brains, no glowing holograms, no gradients or orbs. An original conceptual illustration of imagined reading, not a screenshot or experimental result.
 
 ## next-bottleneck
 
