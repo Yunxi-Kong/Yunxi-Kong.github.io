@@ -1,11 +1,43 @@
 export const writing = [
   {
+    slug: "two-hard-problems", url: "/writing/two-hard-problems/",
+    title: "Can Two Hard Problems Help Each Other?",
+    description: "A research intuition about complementary information, useful disagreement, and why two confident agents can still be wrong together.",
+    topic: "Cooperative intelligence", kind: "Research note", date: "2026-10-29", minutes: 7,
+    question: "What does one participant know that can change the other's search?",
+    image: { src: "/assets/essays/mutual-constraints.webp", small: "/assets/essays/mutual-constraints-720.webp", width: 1440, height: 960, alt: "Two collaborators combine a route map with an appointment constraint to narrow the available paths" }
+  },
+  {
+    slug: "answer-outruns-understanding", url: "/writing/answer-outruns-understanding/",
+    title: "When an Answer Outruns Understanding",
+    description: "The output is ready. The ability to question it may not be. What should intelligent tools leave their users able to do?",
+    topic: "Human understanding", kind: "Essay", date: "2026-10-29", minutes: 7,
+    question: "Can I tell what would make this answer stop being useful?",
+    image: { src: "/assets/essays/answer-and-understanding.webp", small: "/assets/essays/answer-and-understanding-720.webp", width: 1440, height: 960, alt: "A person checks the stable-price assumption behind an AI-generated demand forecast; all diagrams are conceptual, not data" }
+  },
+  {
+    slug: "agents-and-organizations", url: "/writing/agents-and-organizations/",
+    title: "A Hundred Agents Are Not an Organization",
+    description: "Parallel work becomes collective action only when promises, resources, and the authority to change them fit together.",
+    topic: "Agents & institutions", kind: "Essay", date: "2026-10-29", minutes: 7,
+    question: "Who is allowed to turn a suggestion into a commitment?",
+    image: { src: "/assets/essays/agent-commitments.webp", small: "/assets/essays/agent-commitments-720.webp", width: 1440, height: 960, alt: "Reservation, announcement, and approval agents meet at a shared commitments ledger where two bookings conflict" }
+  },
+  {
+    slug: "what-still-has-to-be-lived", url: "/writing/what-still-has-to-be-lived/",
+    title: "What Still Has to Be Lived",
+    description: "Even an extraordinary intelligence cannot make its experience become mine. That changes what I want from education and technology.",
+    topic: "Experience & human capability", kind: "Essay", date: "2026-10-29", minutes: 7,
+    question: "Are we producing an artifact, or making an experience possible for someone?",
+    image: { src: "/assets/essays/experience-not-output.webp", small: "/assets/essays/experience-not-output-720.webp", width: 1440, height: 960, alt: "A person plays a piano while a tablet provides a score and analysis, distinguishing assistance from the experience of playing" }
+  },
+  {
     slug: "what-should-a-book-do-in-vr", url: "/writing/what-should-a-book-do-in-vr/",
     title: "What Should a Book Do in VR?",
     description: "A turning page is a compelling demonstration. A question that travels between books might be a more interesting design problem.",
     topic: "Spatial interaction & learning", kind: "Essay", date: "2026-10-29", minutes: 8,
     question: "After the surprise wears off, what can the reader do that matters?",
-    image: { src: "/assets/essays/book-in-vr.webp", small: "/assets/essays/book-in-vr-720.webp", width: 1440, height: 960, alt: "Conceptual illustration: hands hold a physical book beside its translucent counterpart, with a bookmark linking to another book" }
+    image: { src: "/assets/essays/vr-reading-headset.webp", small: "/assets/essays/vr-reading-headset-720.webp", width: 1440, height: 960, alt: "A reader wears a mixed-reality headset while turning a physical page; an inset shows the synchronized virtual book through the headset" }
   },
   {
     slug: "the-next-bottleneck", url: "/writing/the-next-bottleneck/",

@@ -4,8 +4,8 @@ slug: what-should-a-book-do-in-vr
 ---
 
 <figure class="article-figure editorial-figure">
-  <img src="/assets/essays/book-in-vr.webp" srcset="/assets/essays/book-in-vr-720.webp 720w, /assets/essays/book-in-vr.webp 1440w" sizes="(max-width: 760px) calc(100vw - 40px), 730px" width="1440" height="960" alt="A reader holds a physical book alongside a translucent counterpart; a bookmark connects it to a passage in another book" decoding="async" />
-  <figcaption><strong>A gesture can connect more than two pages.</strong> The imagined bookmark carries a question from one account to another. AI-generated conceptual illustration, not a prototype screenshot.</figcaption>
+  <img src="/assets/essays/vr-reading-headset.webp" srcset="/assets/essays/vr-reading-headset-720.webp 720w, /assets/essays/vr-reading-headset.webp 1440w" sizes="(max-width: 760px) calc(100vw - 40px), 730px" width="1440" height="960" alt="A person wearing a mixed-reality headset turns a physical book page; the inset shows their hands, the paper book, and a synchronized virtual counterpart through the headset" decoding="async" />
+  <figcaption><strong>Outside the headset, a paper page. Inside, a linked digital view.</strong> This imagined mixed-reality interaction makes the physical gesture and its virtual counterpart visible together. AI-generated conceptual illustration, not a Histy screenshot.</figcaption>
 </figure>
 
 Turn a paper page, and a virtual page turns with it. The pleasure is immediate: something in your hands has crossed into another world without losing its familiar shape.
@@ -37,8 +37,8 @@ In the design I have in mind, the bookmark would bring back the first passage al
 The important action is not opening a portal. It is keeping a question alive across a change of context.
 
 <figure class="article-figure editorial-figure">
-  <img src="/assets/essays/competing-accounts.webp" srcset="/assets/essays/competing-accounts-720.webp 720w, /assets/essays/competing-accounts.webp 1440w" sizes="(max-width: 760px) calc(100vw - 40px), 730px" width="1440" height="720" alt="Two open books show different locations for a bridge across a river, with lines returning each map to its own page and a hand carrying a bookmark between them" loading="lazy" decoding="async" />
-  <figcaption><strong>Two accounts, not one finished answer.</strong> The crossings are fictional; the point is to keep an interpretation connected to its source. AI-generated conceptual illustration, not historical evidence or an experimental result.</figcaption>
+  <img src="/assets/essays/vr-source-comparison.webp" srcset="/assets/essays/vr-source-comparison-720.webp 720w, /assets/essays/vr-source-comparison.webp 1440w" sizes="(max-width: 760px) calc(100vw - 40px), 730px" width="1440" height="720" alt="Through a mixed-reality headset, two spatial map windows remain anchored to passages in two real books; an inset shows the headset wearer" loading="lazy" decoding="async" />
+  <figcaption><strong>Compare sources in the headset without losing the page.</strong> Two imagined spatial windows give conflicting locations for a fictional crossing. Their connections to the books remain visible. AI-generated conceptual illustration, not historical evidence, a functioning interface, or an experimental result.</figcaption>
 </figure>
 
 An AI could help retrieve a relevant passage or suggest a possible connection. It should not silently turn "these may concern the same event" into "these are equivalent accounts." The reader needs to be able to reject the match, inspect the original wording, and distinguish their own note from the system's suggestion.

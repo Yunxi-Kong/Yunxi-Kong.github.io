@@ -44,10 +44,10 @@ try {
         const accessibility = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"]).analyze();
         assert.deepEqual(accessibility.violations.map(v => ({ id: v.id, targets: v.nodes.map(n => n.target) })), [], `${route}: accessibility`);
       }
-      if ([1440, 390].includes(width) && ["/", "/about/", "/research/", "/projects/asnr-brain-atlas/", "/projects/motiverse/", "/writing/", "/writing/what-should-a-book-do-in-vr/", "/writing/the-next-bottleneck/", "/writing/human-capability/", "/writing/simulation-and-evidence/", "/writing/interaction-logs/", "/publications/"].includes(route)) {
+      if ([1440, 390].includes(width) && (["/", "/about/", "/research/", "/projects/asnr-brain-atlas/", "/projects/motiverse/", "/publications/"].includes(route) || route.startsWith("/writing/"))) {
         await page.screenshot({ path: `test-results/${width}-${route.replaceAll("/", "_")}.png`, fullPage: true });
         if (route === "/") await page.screenshot({ path: `test-results/${width}-home-viewport.png` });
-        if (route === "/writing/the-next-bottleneck/") await page.screenshot({ path: `test-results/${width}-essay-viewport.png` });
+        if (route.startsWith("/writing/") && route !== "/writing/") await page.screenshot({ path: `test-results/${width}-${route.replaceAll("/", "_")}-viewport.png` });
       }
       report.push({ width, route, ...metrics });
     }
@@ -128,6 +128,29 @@ try {
   }
   await noScript.close();
   console.log("Passed no-JavaScript interaction and complete print explanations.");
+  const reading = await browser.newContext({ javaScriptEnabled: false, reducedMotion: "reduce" });
+  const readingPage = await reading.newPage();
+  for (const width of [320, 390, 768, 1440]) {
+    await readingPage.setViewportSize({ width, height: 960 });
+    for (const slug of ["two-hard-problems", "answer-outruns-understanding"]) {
+      await readingPage.emulateMedia({ media: "screen" });
+      await readingPage.goto(`${base}/writing/${slug}/`);
+      const reasoning = readingPage.locator(".reading-case");
+      assert.equal(await reasoning.getAttribute("open"), null);
+      await reasoning.locator("summary").focus();
+      await readingPage.keyboard.press("Enter");
+      assert.equal(await reasoning.getAttribute("open"), "");
+      assert.ok(await reasoning.locator("p").first().isVisible(), `${slug}: keyboard expansion`);
+      if ([390, 1440].includes(width)) await reasoning.screenshot({ path: `test-results/${width}-${slug}-example.png` });
+      await readingPage.keyboard.press("Enter");
+      assert.equal(await reasoning.getAttribute("open"), null);
+      await readingPage.emulateMedia({ media: "print" });
+      assert.ok(await reasoning.locator("p").first().isVisible(), `${slug}: print must expose the closed explanation`);
+      assert.equal(await reasoning.evaluate(e => getComputedStyle(e, "::details-content").contentVisibility), "visible");
+    }
+  }
+  await reading.close();
+  console.log("Passed both new reasoning examples at all widths, without JavaScript and in print.");
   await writeFile("test-results/browser-report.json", JSON.stringify(report, null, 2));
 } finally {
   await browser.close();
